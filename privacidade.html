@@ -67,10 +67,16 @@
             margin: 24px 0;
         }
 
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            min-width: 500px;
         }
 
         th,
@@ -94,6 +100,30 @@
         a:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            th,
+            td {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 
@@ -109,42 +139,44 @@
         </div>
 
         <h2>1. Dados que Coletamos</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Tipo de Dado</th>
-                    <th>Finalidade</th>
-                    <th>Base Legal (LGPD)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nome completo</td>
-                    <td>Identificação e comunicação</td>
-                    <td>Execução de contrato</td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>Entrega do serviço</td>
-                    <td>Execução de contrato</td>
-                </tr>
-                <tr>
-                    <td>CNPJ/CPF</td>
-                    <td>Emissão de nota fiscal</td>
-                    <td>Obrigação legal</td>
-                </tr>
-                <tr>
-                    <td>Telefone</td>
-                    <td>Suporte ao cliente</td>
-                    <td>Legítimo interesse</td>
-                </tr>
-                <tr>
-                    <td>Dados de pagamento</td>
-                    <td>Processamento de cobranças</td>
-                    <td>Execução de contrato</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Dado</th>
+                        <th>Finalidade</th>
+                        <th>Base Legal (LGPD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nome completo</td>
+                        <td>Identificação e comunicação</td>
+                        <td>Execução de contrato</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>Entrega do serviço</td>
+                        <td>Execução de contrato</td>
+                    </tr>
+                    <tr>
+                        <td>CNPJ/CPF</td>
+                        <td>Emissão de nota fiscal</td>
+                        <td>Obrigação legal</td>
+                    </tr>
+                    <tr>
+                        <td>Telefone</td>
+                        <td>Suporte ao cliente</td>
+                        <td>Legítimo interesse</td>
+                    </tr>
+                    <tr>
+                        <td>Dados de pagamento</td>
+                        <td>Processamento de cobranças</td>
+                        <td>Execução de contrato</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <h2>2. Como Usamos Seus Dados</h2>
         <ul>
