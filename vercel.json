@@ -1,0 +1,15 @@
+{
+    "cleanUrls": true,
+    "redirects": [
+        {
+            "source": "/termos",
+            "destination": "/terms.html",
+            "permanent": true
+        },
+        {
+            "source": "/privacidade",
+            "destination": "/privacy.html",
+            "permanent": true
+        }
+    ]
+}
