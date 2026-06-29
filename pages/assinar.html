@@ -369,7 +369,7 @@
             align-items: center;
             gap: 8px;
             padding: 10px 16px;
-            background: #f3f3f3;
+            background: var(--surface);
             border-bottom: 1px solid var(--border);
             font-size: 11px;
             color: var(--muted);
@@ -395,7 +395,18 @@
         .sheet-table td {
             border: 1px solid var(--border);
             padding: 7px 10px;
+            text-align: center;
+        }
+
+        .sheet-table td.cell-left {
             text-align: left;
+        }
+
+        .sheet-table td.currency-cell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
         }
 
         .sheet-table td {
@@ -409,53 +420,22 @@
         }
 
         .sheet-table th {
-            background: var(--navy);
+            background: #1f4e79;
             font-weight: 700;
             color: white;
             font-size: 11px;
         }
 
-        .sheet-table th.group-a {
-            background: #0d3f8f;
-        }
-
-        .sheet-table th.group-b {
-            background: var(--navy);
-        }
-
-        .sheet-table th.group-c {
-            background: #6b4e0f;
-        }
-
-        .sheet-table td.group-a {
-            background: var(--accent-soft);
-        }
-
-        .sheet-table td.group-b {
-            background: rgba(26, 43, 74, 0.045);
-        }
-
-        .sheet-table td.group-c {
-            background: #fff7ec;
+        .sheet-table tbody tr:nth-child(odd) td {
+            background-color: #ffffff;
         }
 
         .sheet-table tbody tr:nth-child(even) td {
-            background-color: rgba(0, 0, 0, 0.018);
+            background-color: #f2f2f2;
         }
 
-        .sheet-table tbody tr:nth-child(even) td.group-a {
-            background-color: rgba(20, 98, 245, 0.12);
-        }
-
-        .sheet-table tbody tr:nth-child(even) td.group-b {
-            background-color: rgba(26, 43, 74, 0.08);
-        }
-
-        .sheet-table tbody tr:nth-child(even) td.group-c {
-            background-color: #fdecd2;
-        }
-
-        .sheet-table td.status-cell {
+        .sheet-table td.status-cell,
+        .sheet-table td.evento-cell {
             font-weight: 600;
             border-radius: 0;
         }
@@ -463,6 +443,16 @@
         .sheet-table td.doc-link {
             color: var(--accent);
             font-weight: 600;
+        }
+
+        .sheet-table td.evento-cell.is-novo {
+            background-color: #e2efda !important;
+            color: #2e7d32;
+        }
+
+        .sheet-table td.evento-cell.is-mudanca {
+            background-color: #fff2cc !important;
+            color: #92720c;
         }
 
         .sheet-legend {
@@ -502,22 +492,23 @@
         }
 
         .sheet-table td.status-cell.is-emitido {
-            background-color: #e7f6ec !important;
-            color: #15803d;
+            background-color: #e2efda !important;
+            color: #2e7d32;
         }
 
         .sheet-table td.status-cell.is-analise {
-            background-color: #eaf2ff !important;
+            background-color: #deeaf1 !important;
             color: #1462f5;
         }
 
-        .sheet-table td.status-cell.is-aguardando {
-            background-color: #fdeae7 !important;
+        .sheet-table td.status-cell.is-aguardando,
+        .sheet-table td.status-cell.is-cancelado {
+            background-color: #fce4d6 !important;
             color: #c2410c;
         }
 
         .sheet-table td.status-cell.is-arquivado {
-            background-color: #f1f2f4 !important;
+            background-color: #ededed !important;
             color: #6b7280;
         }
 
@@ -976,6 +967,19 @@
             margin-bottom: 12px;
         }
 
+        .faq-group-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--muted-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 24px 0 8px;
+        }
+
+        .faq-group-title:first-of-type {
+            margin-top: 0;
+        }
+
         .faq-item {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -1213,6 +1217,16 @@
             margin-bottom: 0;
         }
 
+        .hero-slogan {
+            font-family: var(--serif);
+            font-size: 17px;
+            font-weight: 600;
+            color: #93b4fb;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
         @media (max-width: 600px) {
             .hero {
                 padding: 112px 20px 44px;
@@ -1220,6 +1234,10 @@
 
             .hero h1 {
                 font-size: 26px;
+            }
+
+            .hero-sub {
+                font-size: 13px;
             }
         }
 
@@ -1700,11 +1718,12 @@
                 <!-- Hero -->
                 <div class="hero-wrap">
                     <section class="hero">
-                        <p class="hero-eyebrow">Inteligência de Mercado — Chegue primeiro. Sempre</p>
+                        <p class="hero-eyebrow">Inteligência de Mercado</p>
                         <h1>Cada movimentação da CETESB, <em>traduzida em oportunidade comercial.</em></h1>
                         <p class="hero-sub">A Pulsedge monitora diariamente o portal da CETESB e entrega por e-mail
                             uma planilha com cada nova movimentação de licenciamento ambiental no Estado de São Paulo
                             &mdash; com CNPJ, contatos e endereço prontos para abordagem.</p>
+                        <p class="hero-slogan">Chegue primeiro. Sempre.</p>
                     </section>
                 </div>
 
@@ -1817,8 +1836,9 @@
                             portal público diariamente &mdash; ou descobrir a movimentação semanas depois, por acaso.
                         </p>
                         <p class="lead-text">A Pulsedge faz essa varredura por você: cada linha da planilha já traz o
-                            processo, o status e os dados completos da empresa e do empreendimento, prontos para uma
-                            abordagem comercial no mesmo dia.</p>
+                            processo, o status e os dados completos da empresa e do empreendimento, para que o
+                            contato comece no mesmo dia &mdash; não semanas depois.</p>
+                        <p class="lead-text">E cada linha já chega com:</p>
 
                         <div class="delivery-recap" aria-hidden="true">
                             <span class="delivery-item"><span class="dot group-a"></span>Tipo de processo</span>
@@ -1845,222 +1865,267 @@
                                 <table class="sheet-table">
                                     <thead>
                                         <tr>
-                                            <th class="group-a">Evento</th>
-                                            <th class="group-a">Status Anterior</th>
-                                            <th class="group-a">Status Atual</th>
-                                            <th class="group-a">Detectado em</th>
-                                            <th class="group-a">Tipo de Processo</th>
-                                            <th class="group-a">Solicitação CETESB</th>
-                                            <th class="group-a">Número e-Ambiente</th>
-                                            <th class="group-a">Número SIPOL</th>
-                                            <th class="group-a">Agência CETESB</th>
-                                            <th class="group-a">Protocolado em</th>
-                                            <th class="group-a">Atualizado em</th>
-                                            <th class="group-b">CNPJ</th>
-                                            <th class="group-b">Razão Social</th>
-                                            <th class="group-b">Nome Fantasia</th>
-                                            <th class="group-b">Tipologia</th>
-                                            <th class="group-b">CNAE Principal</th>
-                                            <th class="group-b">CNAEs Secundários</th>
-                                            <th class="group-b">Porte</th>
-                                            <th class="group-b">Fundada em</th>
-                                            <th class="group-b">Natureza Jurídica</th>
-                                            <th class="group-b">Capital Social</th>
-                                            <th class="group-b">Matriz/Filial</th>
-                                            <th class="group-b">Situação Cadastral</th>
-                                            <th class="group-b">Telefones</th>
-                                            <th class="group-b">E-mail</th>
-                                            <th class="group-b">CEP (Empresa)</th>
-                                            <th class="group-b">Logradouro (Empresa)</th>
-                                            <th class="group-b">Número (Empresa)</th>
-                                            <th class="group-b">Complemento (Empresa)</th>
-                                            <th class="group-b">Bairro (Empresa)</th>
-                                            <th class="group-b">Cidade (Empresa)</th>
-                                            <th class="group-b">UF (Empresa)</th>
-                                            <th class="group-c">Nome do Empreendimento</th>
-                                            <th class="group-c">CEP (Empreendimento)</th>
-                                            <th class="group-c">Logradouro (Empreendimento)</th>
-                                            <th class="group-c">Bairro (Empreendimento)</th>
-                                            <th class="group-c">Cidade (Empreendimento)</th>
-                                            <th class="group-c">UF (Empreendimento)</th>
-                                            <th class="group-c">Observação</th>
-                                            <th class="group-c">Documentos disponíveis</th>
+                                            <th>Evento</th>
+                                            <th>Status Anterior</th>
+                                            <th>Status Atual</th>
+                                            <th>Detectado em</th>
+                                            <th>Tipo de Processo</th>
+                                            <th>Solicitação CETESB</th>
+                                            <th>Número e-Ambiente</th>
+                                            <th>Número SIPOL</th>
+                                            <th>Agência CETESB</th>
+                                            <th>Protocolado em</th>
+                                            <th>Atualizado em</th>
+                                            <th>CNPJ</th>
+                                            <th>Razão Social</th>
+                                            <th>Nome Fantasia</th>
+                                            <th>Tipologia</th>
+                                            <th>CNAE Principal</th>
+                                            <th>CNAEs Secundários</th>
+                                            <th>Porte</th>
+                                            <th>Fundada em</th>
+                                            <th>Natureza Jurídica</th>
+                                            <th>Capital Social</th>
+                                            <th>Matriz/Filial</th>
+                                            <th>Situação Cadastral</th>
+                                            <th>Telefones</th>
+                                            <th>E-mail</th>
+                                            <th>CEP (Empresa)</th>
+                                            <th>Logradouro (Empresa)</th>
+                                            <th>Número (Empresa)</th>
+                                            <th>Complemento (Empresa)</th>
+                                            <th>Bairro (Empresa)</th>
+                                            <th>Cidade (Empresa)</th>
+                                            <th>UF (Empresa)</th>
+                                            <th>Nome do Empreendimento</th>
+                                            <th>CEP (Empreendimento)</th>
+                                            <th>Logradouro (Empreendimento)</th>
+                                            <th>Bairro (Empreendimento)</th>
+                                            <th>Cidade (Empreendimento)</th>
+                                            <th>UF (Empreendimento)</th>
+                                            <th>Observação</th>
+                                            <th>Documentos disponíveis</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="group-a">Nova Requisição</td>
-                                            <td class="group-a">&mdash;</td>
-                                            <td class="group-a status-cell is-emitido">Emitido</td>
-                                            <td class="group-a">27/06/2026</td>
-                                            <td class="group-a">Certidão de Desmembramento Urbano para Usos Comercial e
-                                                Residencial</td>
-                                            <td class="group-a">93639742</td>
-                                            <td class="group-a">&mdash;</td>
-                                            <td class="group-a">&mdash;</td>
-                                            <td class="group-a">Agência Ambiental de Limeira</td>
-                                            <td class="group-a">26/06/2026</td>
-                                            <td class="group-a">27/06/2026</td>
-                                            <td class="group-b">12.345.678/0001-90</td>
-                                            <td class="group-b">Indústria Exemplo Ltda</td>
-                                            <td class="group-b">Exemplo Galvanizados</td>
-                                            <td class="group-b">Indústria</td>
-                                            <td class="group-b">2542-0/00 - Fabricação de Artigos de Serralheria, Exceto
-                                                Esquadrias</td>
-                                            <td class="group-b">2511-0/00 - Fabricação de Estruturas Metálicas</td>
-                                            <td class="group-b">Pequena Empresa</td>
-                                            <td class="group-b">14/03/2011</td>
-                                            <td class="group-b">Sociedade Empresária Limitada</td>
-                                            <td class="group-b">250.000</td>
-                                            <td class="group-b">Matriz</td>
-                                            <td class="group-b">Ativa</td>
-                                            <td class="group-b">(11) 4002-8922</td>
-                                            <td class="group-b">contato@exemplo.com.br</td>
-                                            <td class="group-b">13480-000</td>
-                                            <td class="group-b">Rua das Indústrias</td>
-                                            <td class="group-b">450</td>
-                                            <td class="group-b">&mdash;</td>
-                                            <td class="group-b">Distrito Industrial</td>
-                                            <td class="group-b">Limeira</td>
-                                            <td class="group-b">SP</td>
-                                            <td class="group-c">Galpão Exemplo I</td>
-                                            <td class="group-c">13480-010</td>
-                                            <td class="group-c">Avenida do Parque Industrial</td>
-                                            <td class="group-c">Distrito Industrial</td>
-                                            <td class="group-c">Limeira</td>
-                                            <td class="group-c">SP</td>
-                                            <td class="group-c">&mdash;</td>
-                                            <td class="group-c doc-link">Ver PDF &#8599;</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="group-a">Mudança de Status</td>
-                                            <td class="group-a">Aguardando documentos</td>
-                                            <td class="group-a status-cell is-analise">Em análise</td>
-                                            <td class="group-a">27/06/2026</td>
-                                            <td class="group-a">Licença de Instalação &mdash; MCE</td>
-                                            <td class="group-a">93620258</td>
-                                            <td class="group-a">CETESB.034699/2026-76</td>
-                                            <td class="group-a">&mdash;</td>
-                                            <td class="group-a">Agência Ambiental de Piracicaba</td>
-                                            <td class="group-a">25/05/2026</td>
-                                            <td class="group-a">27/06/2026</td>
-                                            <td class="group-b">98.765.432/0001-10</td>
-                                            <td class="group-b">Agropecuária Modelo S/A</td>
-                                            <td class="group-b">Fazenda Modelo</td>
-                                            <td class="group-b">Agropecuária</td>
-                                            <td class="group-b">0151-2/01 - Criação de Bovinos para Corte</td>
-                                            <td class="group-b">0161-0/03 - Serviço de Preparação de Terreno, Cultivo e
-                                                Colheita</td>
-                                            <td class="group-b">Demais</td>
-                                            <td class="group-b">08/09/2003</td>
-                                            <td class="group-b">Sociedade Anônima Fechada</td>
-                                            <td class="group-b">1.800.000</td>
-                                            <td class="group-b">Matriz</td>
-                                            <td class="group-b">Ativa</td>
-                                            <td class="group-b">(19) 99876-5432</td>
-                                            <td class="group-b">financeiro@modelo.com.br</td>
-                                            <td class="group-b">13400-000</td>
-                                            <td class="group-b">Estrada Municipal SP-191</td>
-                                            <td class="group-b">Km 12</td>
-                                            <td class="group-b">&mdash;</td>
-                                            <td class="group-b">Zona Rural</td>
-                                            <td class="group-b">Piracicaba</td>
-                                            <td class="group-b">SP</td>
-                                            <td class="group-c">Fazenda Modelo</td>
-                                            <td class="group-c">13400-020</td>
-                                            <td class="group-c">Estrada Municipal SP-191</td>
-                                            <td class="group-c">Zona Rural</td>
-                                            <td class="group-c">Piracicaba</td>
-                                            <td class="group-c">SP</td>
-                                            <td class="group-c">&mdash;</td>
-                                            <td class="group-c">&mdash;</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="group-a">Mudança de Status</td>
-                                            <td class="group-a">Em análise</td>
-                                            <td class="group-a status-cell is-arquivado">Arquivado</td>
-                                            <td class="group-a">27/06/2026</td>
-                                            <td class="group-a">Parecer Técnico &mdash; GRAPROHAB &mdash; Novos
-                                                Empreendimentos</td>
-                                            <td class="group-a">93357189</td>
-                                            <td class="group-a">CETESB.021900/2025-34</td>
-                                            <td class="group-a">370031225</td>
-                                            <td class="group-a">Agência Ambiental de Sorocaba</td>
-                                            <td class="group-a">17/03/2025</td>
-                                            <td class="group-a">27/06/2026</td>
-                                            <td class="group-b">11.222.333/0001-44</td>
-                                            <td class="group-b">Construtora Horizonte Ltda</td>
-                                            <td class="group-b">Horizonte Empreendimentos</td>
-                                            <td class="group-b">Parcelamento do Solo</td>
-                                            <td class="group-b">4110-7/00 - Incorporação de Empreendimentos
+                                            <td class="evento-cell is-novo">Nova Requisição</td>
+                                            <td>-</td>
+                                            <td class="status-cell is-emitido">Emitido</td>
+                                            <td data-offset-days="-3">27/06/2026</td>
+                                            <td class="cell-left">Certidão para fins de Registro de Desmembramento
+                                                Urbano para Usos Comercial e Residencial</td>
+                                            <td>93714082</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td class="cell-left">Agência Ambiental de Jundiaí</td>
+                                            <td data-offset-days="-4">26/06/2026</td>
+                                            <td>-</td>
+                                            <td>19.834.221/0001-05</td>
+                                            <td class="cell-left">Vale Verde Urbanizadora Ltda</td>
+                                            <td>-</td>
+                                            <td>Parcelamento do Solo</td>
+                                            <td class="cell-left">4110-7/00 - Incorporação de Empreendimentos
                                                 Imobiliários</td>
-                                            <td class="group-b">4211-1/01 - Construção de Rodovias e Ferrovias</td>
-                                            <td class="group-b">Demais</td>
-                                            <td class="group-b">22/11/2008</td>
-                                            <td class="group-b">Sociedade Empresária Limitada</td>
-                                            <td class="group-b">3.200.000</td>
-                                            <td class="group-b">Matriz</td>
-                                            <td class="group-b">Ativa</td>
-                                            <td class="group-b">(15) 3411-2200</td>
-                                            <td class="group-b">juridico@horizonte.com.br</td>
-                                            <td class="group-b">18087-000</td>
-                                            <td class="group-b">Avenida Engenheiro Carlos Reis</td>
-                                            <td class="group-b">1200</td>
-                                            <td class="group-b">Sala 12</td>
-                                            <td class="group-b">Jardim Vergueiro</td>
-                                            <td class="group-b">Sorocaba</td>
-                                            <td class="group-b">SP</td>
-                                            <td class="group-c">Loteamento Horizonte Sul</td>
-                                            <td class="group-c">18087-120</td>
-                                            <td class="group-c">Avenida Engenheiro Carlos Reis</td>
-                                            <td class="group-c">Jardim Vergueiro</td>
-                                            <td class="group-c">Sorocaba</td>
-                                            <td class="group-c">SP</td>
-                                            <td class="group-c">&mdash;</td>
-                                            <td class="group-c doc-link">Ver PDF &#8599;</td>
+                                            <td class="cell-left">4211-1/01 - Construção de Rodovias e Ferrovias</td>
+                                            <td>Empresa de Pequeno Porte</td>
+                                            <td>12/08/2014</td>
+                                            <td>Sociedade Empresária Limitada</td>
+                                            <td class="currency-cell"><span>R$</span><span>850.000,00</span></td>
+                                            <td>Matriz</td>
+                                            <td>Ativa</td>
+                                            <td class="cell-left">(11) 4521-3380</td>
+                                            <td class="cell-left">contato@valeverdeurb.com.br</td>
+                                            <td>13207-100</td>
+                                            <td class="cell-left">Avenida Doutor Cavalcanti</td>
+                                            <td>540</td>
+                                            <td>-</td>
+                                            <td>Jardim Pacaembu</td>
+                                            <td>Jundiaí</td>
+                                            <td>SP</td>
+                                            <td class="cell-left">Loteamento Vale Verde II</td>
+                                            <td>13212-450</td>
+                                            <td class="cell-left">Estrada Municipal JD-070</td>
+                                            <td>Distrito Industrial</td>
+                                            <td>Jundiaí</td>
+                                            <td>SP</td>
+                                            <td>-</td>
+                                            <td class="cell-left doc-link">Ver PDF &#8599;</td>
                                         </tr>
                                         <tr>
-                                            <td class="group-a">Mudança de Status</td>
-                                            <td class="group-a">Em análise</td>
-                                            <td class="group-a status-cell is-aguardando">Aguardando documentos</td>
-                                            <td class="group-a">27/06/2026</td>
-                                            <td class="group-a">Licença Prévia &mdash; MCE</td>
-                                            <td class="group-a">93629114</td>
-                                            <td class="group-a">CETESB.040420/2026-28</td>
-                                            <td class="group-a">&mdash;</td>
-                                            <td class="group-a">Agência Ambiental de Cubatão</td>
-                                            <td class="group-a">24/06/2026</td>
-                                            <td class="group-a">27/06/2026</td>
-                                            <td class="group-b">40.420.871/0001-22</td>
-                                            <td class="group-b">Remediação Ambiental Sul Ltda</td>
-                                            <td class="group-b">RAS Ambiental</td>
-                                            <td class="group-b">Remediação de Solo</td>
-                                            <td class="group-b">3900-5/00 - Descontaminação e Outros Serviços de Gestão
-                                                de Resíduos</td>
-                                            <td class="group-b">7120-1/00 - Testes e Análises Técnicas</td>
-                                            <td class="group-b">Pequena Empresa</td>
-                                            <td class="group-b">02/02/2016</td>
-                                            <td class="group-b">Sociedade Empresária Limitada</td>
-                                            <td class="group-b">600.000</td>
-                                            <td class="group-b">Matriz</td>
-                                            <td class="group-b">Ativa</td>
-                                            <td class="group-b">(13) 3221-4490</td>
-                                            <td class="group-b">contato@rasambiental.com.br</td>
-                                            <td class="group-b">11900-000</td>
-                                            <td class="group-b">Rua Industrial</td>
-                                            <td class="group-b">88</td>
-                                            <td class="group-b">&mdash;</td>
-                                            <td class="group-b">Vila Nova</td>
-                                            <td class="group-b">Cubatão</td>
-                                            <td class="group-b">SP</td>
-                                            <td class="group-c">Área Industrial Remediação II</td>
-                                            <td class="group-c">11900-040</td>
-                                            <td class="group-c">Rodovia Cônego Domênico Rangoni</td>
-                                            <td class="group-c">Vila Nova</td>
-                                            <td class="group-c">Cubatão</td>
-                                            <td class="group-c">SP</td>
-                                            <td class="group-c">&mdash;</td>
-                                            <td class="group-c">&mdash;</td>
+                                            <td class="evento-cell is-mudanca">Mudança de Status</td>
+                                            <td>Aguardando documentos</td>
+                                            <td class="status-cell is-analise">Em análise</td>
+                                            <td data-offset-days="-3">27/06/2026</td>
+                                            <td class="cell-left">Certificado de Movimentação de Resíduos de Interesse
+                                                Ambiental - CADRI</td>
+                                            <td>93687215</td>
+                                            <td>CETESB.018843/2026-52</td>
+                                            <td>-</td>
+                                            <td class="cell-left">Agência Ambiental de Guarulhos</td>
+                                            <td data-offset-days="-45">13/05/2026</td>
+                                            <td data-offset-days="-3">27/06/2026</td>
+                                            <td>27.451.908/0001-33</td>
+                                            <td class="cell-left">Recicla Entulho Transportes Ltda</td>
+                                            <td>ReEntulho</td>
+                                            <td>Gestão de Resíduos</td>
+                                            <td class="cell-left">3811-4/00 - Coleta de Resíduos Não-Perigosos</td>
+                                            <td class="cell-left">4941-5/00 - Transporte Rodoviário de Carga</td>
+                                            <td>Demais</td>
+                                            <td>19/02/2009</td>
+                                            <td>Sociedade Empresária Limitada</td>
+                                            <td class="currency-cell"><span>R$</span><span>1.200.000,00</span></td>
+                                            <td>Matriz</td>
+                                            <td>Ativa</td>
+                                            <td class="cell-left">(11) 2408-7765</td>
+                                            <td class="cell-left">operacoes@reentulho.com.br</td>
+                                            <td>07034-000</td>
+                                            <td class="cell-left">Avenida Monteiro Lobato</td>
+                                            <td>1880</td>
+                                            <td>-</td>
+                                            <td>Macedo</td>
+                                            <td>Guarulhos</td>
+                                            <td>SP</td>
+                                            <td class="cell-left">Central de Transbordo ReEntulho</td>
+                                            <td>07097-310</td>
+                                            <td class="cell-left">Rua dos Aimorés</td>
+                                            <td>Cumbica</td>
+                                            <td>Guarulhos</td>
+                                            <td>SP</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="evento-cell is-mudanca">Mudança de Status</td>
+                                            <td>Em análise</td>
+                                            <td class="status-cell is-arquivado">Arquivado</td>
+                                            <td data-offset-days="-3">27/06/2026</td>
+                                            <td class="cell-left">Parecer Técnico &mdash; GRAPROHAB &mdash; Novos
+                                                Empreendimentos</td>
+                                            <td>93412977</td>
+                                            <td>CETESB.029104/2025-61</td>
+                                            <td>370048810</td>
+                                            <td class="cell-left">Agência Ambiental de Sorocaba</td>
+                                            <td data-offset-days="-380">13/06/2025</td>
+                                            <td data-offset-days="-3">27/06/2026</td>
+                                            <td>14.788.205/0001-62</td>
+                                            <td class="cell-left">Construtora Bom Retiro Empreendimentos Ltda</td>
+                                            <td>Bom Retiro Empreendimentos</td>
+                                            <td>Parcelamento do Solo</td>
+                                            <td class="cell-left">4110-7/00 - Incorporação de Empreendimentos
+                                                Imobiliários</td>
+                                            <td class="cell-left">4120-4/00 - Construção de Edifícios</td>
+                                            <td>Demais</td>
+                                            <td>03/05/2007</td>
+                                            <td>Sociedade Empresária Limitada</td>
+                                            <td class="currency-cell"><span>R$</span><span>4.500.000,00</span></td>
+                                            <td>Matriz</td>
+                                            <td>Ativa</td>
+                                            <td class="cell-left">(15) 3221-9040</td>
+                                            <td class="cell-left">juridico@bomretiroemp.com.br</td>
+                                            <td>18035-310</td>
+                                            <td class="cell-left">Rua Doutor José Quaglio</td>
+                                            <td>88</td>
+                                            <td>Sala 4</td>
+                                            <td>Jardim Vergueiro</td>
+                                            <td>Sorocaba</td>
+                                            <td>SP</td>
+                                            <td class="cell-left">Loteamento Bom Retiro</td>
+                                            <td>18087-220</td>
+                                            <td class="cell-left">Avenida Engenheiro Carlos Reis</td>
+                                            <td>Jardim Vergueiro</td>
+                                            <td>Sorocaba</td>
+                                            <td>SP</td>
+                                            <td>-</td>
+                                            <td class="cell-left doc-link">Ver PDF &#8599;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="evento-cell is-mudanca">Mudança de Status</td>
+                                            <td>Em análise</td>
+                                            <td class="status-cell is-aguardando">Aguardando documentos</td>
+                                            <td data-offset-days="-3">27/06/2026</td>
+                                            <td class="cell-left">Licença Prévia e de Instalação - MCE (LP/LI)</td>
+                                            <td>93601734</td>
+                                            <td>CETESB.036650/2026-09</td>
+                                            <td>480051204</td>
+                                            <td class="cell-left">Agência Ambiental de Americana</td>
+                                            <td data-offset-days="-120">28/02/2026</td>
+                                            <td data-offset-days="-3">27/06/2026</td>
+                                            <td>05.972.341/0001-88</td>
+                                            <td class="cell-left">Metalúrgica Convexa Ltda</td>
+                                            <td>Convexa Metais</td>
+                                            <td>Indústria</td>
+                                            <td class="cell-left">2542-0/00 - Fabricação de Artigos de Serralheria,
+                                                Exceto Esquadrias</td>
+                                            <td class="cell-left">2511-0/00 - Fabricação de Estruturas Metálicas</td>
+                                            <td>Micro Empresa</td>
+                                            <td>21/10/2017</td>
+                                            <td>Sociedade Empresária Limitada</td>
+                                            <td class="currency-cell"><span>R$</span><span>180.000,00</span></td>
+                                            <td>Matriz</td>
+                                            <td>Ativa</td>
+                                            <td class="cell-left">(19) 3471-2208</td>
+                                            <td class="cell-left">financeiro@convexametais.com.br</td>
+                                            <td>13465-360</td>
+                                            <td class="cell-left">Rua dos Metalúrgicos</td>
+                                            <td>215</td>
+                                            <td>-</td>
+                                            <td>Jardim São Paulo</td>
+                                            <td>Americana</td>
+                                            <td>SP</td>
+                                            <td class="cell-left">Galpão Convexa Metais</td>
+                                            <td>13465-400</td>
+                                            <td class="cell-left">Rodovia Anhanguera Km 119</td>
+                                            <td>Jardim São Paulo</td>
+                                            <td>Americana</td>
+                                            <td>SP</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="evento-cell is-novo">Nova Requisição</td>
+                                            <td>-</td>
+                                            <td class="status-cell is-analise">Em análise</td>
+                                            <td data-offset-days="-3">27/06/2026</td>
+                                            <td class="cell-left">Parecer Técnico sobre Avaliação Preliminar,
+                                                Investigação Confirmatória, Investigação Detalhada e Avaliação de
+                                                Risco</td>
+                                            <td>93702190</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td class="cell-left">Agência Ambiental de Cubatão</td>
+                                            <td data-offset-days="-9">18/06/2026</td>
+                                            <td>-</td>
+                                            <td>31.064.852/0001-17</td>
+                                            <td class="cell-left">GeoSolo Engenharia Ambiental Ltda</td>
+                                            <td>GeoSolo</td>
+                                            <td>Remediação de Solo</td>
+                                            <td class="cell-left">7120-1/00 - Testes e Análises Técnicas</td>
+                                            <td class="cell-left">3900-5/00 - Descontaminação e Outros Serviços de
+                                                Gestão de Resíduos</td>
+                                            <td>Empresa de Pequeno Porte</td>
+                                            <td>14/06/2015</td>
+                                            <td>Sociedade Empresária Limitada</td>
+                                            <td class="currency-cell"><span>R$</span><span>600.000,00</span></td>
+                                            <td>Matriz</td>
+                                            <td>Ativa</td>
+                                            <td class="cell-left">(13) 3361-7740</td>
+                                            <td class="cell-left">laudos@geosoloambiental.com.br</td>
+                                            <td>11900-180</td>
+                                            <td class="cell-left">Rua dos Geólogos</td>
+                                            <td>340</td>
+                                            <td>-</td>
+                                            <td>Vila Nova</td>
+                                            <td>Cubatão</td>
+                                            <td>SP</td>
+                                            <td class="cell-left">Área Industrial Piaçaguera III</td>
+                                            <td>11900-050</td>
+                                            <td class="cell-left">Rodovia Cônego Domênico Rangoni</td>
+                                            <td>Piaçaguera</td>
+                                            <td>Cubatão</td>
+                                            <td>SP</td>
+                                            <td>-</td>
+                                            <td>-</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2196,6 +2261,8 @@
                     <div class="container">
                         <div class="faq">
                             <p class="faq-title">Perguntas frequentes</p>
+
+                            <p class="faq-group-title">Assinatura e cancelamento</p>
                             <div class="faq-item">
                                 <button type="button" class="faq-item-summary">Posso cancelar quando quiser?</button>
                                 <div class="faq-item-body">
@@ -2205,6 +2272,36 @@
                                         entregas até o fim do período já pago.</p>
                                 </div>
                             </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">O que muda depois que eu
+                                    assinar?</button>
+                                <div class="faq-item-body">
+                                    <p>Você passa a receber por e-mail a planilha com as movimentações no ritmo do
+                                        plano escolhido &mdash; direto na sua caixa de entrada, sem login nem
+                                        aplicativo novo.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">Posso trocar de plano depois?</button>
+                                <div class="faq-item-body">
+                                    <p>Sim. Fale com o suporte e fazemos a troca entre o Pulse Semanal e o Pulse Diário
+                                        a
+                                        partir do próximo ciclo de cobrança.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">Quando vence a assinatura, e posso
+                                    mudar a data?</button>
+                                <div class="faq-item-body">
+                                    <p>A contagem começa no dia em que você assina, e a cobrança mensal se repete
+                                        sempre nessa mesma data no ciclo seguinte. Se quiser mudar o dia de
+                                        vencimento, basta pedir pelo e-mail de suporte &mdash; não há custo para essa
+                                        alteração.</p>
+                                </div>
+                            </div>
+
+                            <p class="faq-group-title">Pagamento e nota fiscal</p>
                             <div class="faq-item">
                                 <button type="button" class="faq-item-summary">O pagamento é seguro?</button>
                                 <div class="faq-item-body">
@@ -2221,56 +2318,25 @@
                                         CNPJ da sua empresa, via Asaas, que envia a nota por e-mail.</p>
                                 </div>
                             </div>
-                            <div class="faq-item">
-                                <button type="button" class="faq-item-summary">O que muda depois que eu
-                                    assinar?</button>
-                                <div class="faq-item-body">
-                                    <p>Você passa a receber por e-mail a planilha com as movimentações no ritmo do
-                                        plano escolhido &mdash; sem precisar instalar nada ou acessar qualquer painel.
-                                    </p>
-                                </div>
-                            </div>
+
+                            <p class="faq-group-title">Dados e fontes</p>
                             <div class="faq-item">
                                 <button type="button" class="faq-item-summary">De onde vêm os dados das
                                     planilhas?</button>
                                 <div class="faq-item-body">
                                     <p>Do portal público da CETESB, que acompanhamos todos os dias. Cada empresa
                                         identificada é cruzada com dados públicos da Receita Federal e da plataforma
-                                        e-Ambiente, para que a planilha já chegue pronta para uso &mdash; sem você
-                                        precisar fazer essa busca manualmente.</p>
+                                        e-Ambiente, para que a planilha já chegue pronta para uso, com essa verificação
+                                        cruzada já feita por nós.</p>
                                 </div>
                             </div>
                             <div class="faq-item">
                                 <button type="button" class="faq-item-summary">Os dados são exclusivos da
                                     Pulsedge?</button>
                                 <div class="faq-item-body">
-                                    <p>Não. São dados públicos &mdash; qualquer empresa pode acessá-los diretamente nos
-                                        portais oficiais. O que a Pulsedge oferece é a automação dessa busca, entregue
-                                        pronta no seu e-mail, todos os dias.</p>
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <button type="button" class="faq-item-summary">Posso trocar de plano depois?</button>
-                                <div class="faq-item-body">
-                                    <p>Sim. Fale com o suporte e fazemos a troca entre o Pulse Semanal e o Pulse Diário
-                                        a
-                                        partir do próximo ciclo de cobrança.</p>
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <button type="button" class="faq-item-summary">Quando é a data de vencimento da
-                                    assinatura?</button>
-                                <div class="faq-item-body">
-                                    <p>A contagem começa no dia em que você assina. Sua cobrança mensal se repete
-                                        sempre nessa mesma data, no ciclo seguinte.</p>
-                                </div>
-                            </div>
-                            <div class="faq-item">
-                                <button type="button" class="faq-item-summary">Posso mudar a data de
-                                    vencimento?</button>
-                                <div class="faq-item-body">
-                                    <p>Sim. Basta pedir pelo e-mail de suporte &mdash; não há custo para fazer essa
-                                        alteração.</p>
+                                    <p>Não &mdash; qualquer empresa pode acessar essas mesmas fontes diretamente. O que
+                                        a Pulsedge entrega é a automação: cruzamos CETESB, Receita Federal e e-Ambiente
+                                        todos os dias e mandamos o resultado pronto no seu e-mail.</p>
                                 </div>
                             </div>
                         </div>
@@ -2436,6 +2502,19 @@
 
         function formatPrice(value) {
             return 'R$ ' + Number(value).toFixed(2).replace('.', ',').replace(',00', '');
+        }
+
+        function dateWithOffset(offsetDays) {
+            const d = new Date();
+            d.setDate(d.getDate() + offsetDays);
+            return d;
+        }
+
+        function formatOffsetDate(offsetDays) {
+            const d = dateWithOffset(offsetDays);
+            const dd = String(d.getDate()).padStart(2, '0');
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            return `${dd}/${mm}/${d.getFullYear()}`;
         }
 
         function formatInt(n) {
@@ -2613,10 +2692,12 @@
 
             document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-            const sheetDate = new Date();
-            sheetDate.setDate(sheetDate.getDate() - 3);
-            const datePrefix = sheetDate.toISOString().slice(0, 10);
+            const datePrefix = dateWithOffset(-3).toISOString().slice(0, 10);
             document.getElementById('sheet-filename').textContent = `${datePrefix}_Diario_Processos_Ambientais.xlsx`;
+
+            document.querySelectorAll('[data-offset-days]').forEach(el => {
+                el.textContent = formatOffsetDate(parseInt(el.dataset.offsetDays, 10));
+            });
 
             fetch('https://api.pulsedge.com.br/stats')
                 .then(res => res.ok ? res.json() : Promise.reject())

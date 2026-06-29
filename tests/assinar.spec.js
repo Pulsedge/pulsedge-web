@@ -140,12 +140,11 @@ test.describe('assinar.html — link valido', () => {
         await expect(firstItem).not.toHaveClass(/open/);
     });
 
-    test('FAQ lista as perguntas sobre vencimento da assinatura', async ({ page }) => {
+    test('FAQ lista a pergunta sobre vencimento da assinatura', async ({ page }) => {
         await mockValidLink(page);
         await page.goto('/assinar?l=lead123');
 
-        await expect(page.getByText('Quando é a data de vencimento da assinatura?')).toBeVisible();
-        await expect(page.getByText('Posso mudar a data de vencimento?')).toBeVisible();
+        await expect(page.getByText('Quando vence a assinatura, e posso mudar a data?')).toBeVisible();
     });
 
     test('checkbox de consentimento aponta para termos e privacidade', async ({ page }) => {
