@@ -10,7 +10,8 @@
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap"
         rel="stylesheet" />
     <style>
         *,
@@ -83,15 +84,34 @@
 
         main {
             flex: 1;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 56px 16px 72px;
         }
 
         .container {
             width: 100%;
             max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .cko-section {
+            padding: 28px 16px;
+        }
+
+        .cko-section.alt {
+            background: var(--bg);
+        }
+
+        .cko-section:first-child {
+            padding-top: 48px;
+        }
+
+        .cko-section:last-child {
+            padding-bottom: 56px;
+        }
+
+        .state-msg-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 56px 16px 72px;
         }
 
         footer {
@@ -248,6 +268,15 @@
             margin-bottom: 14px;
         }
 
+        .section-heading {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin: 0 0 16px;
+        }
+
         #state-checkout h1 {
             font-family: 'Lora', Georgia, serif;
             font-size: 28px;
@@ -260,7 +289,92 @@
         #state-checkout .subtitle {
             font-size: 15px;
             color: var(--muted);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
+        }
+
+        .lead-text {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+            max-width: 640px;
+            margin-bottom: 20px;
+        }
+
+        .intro-proof {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-bottom: 36px;
+        }
+
+        .intro-stats {
+            display: flex;
+            gap: 28px;
+            flex: 1;
+        }
+
+        .intro-stat strong {
+            display: block;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .intro-stat span {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .intro-divider {
+            width: 1px;
+            height: 48px;
+            background: var(--border);
+            flex-shrink: 0;
+        }
+
+        .intro-map {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .intro-map svg {
+            width: 84px;
+            height: auto;
+            display: block;
+        }
+
+        .intro-map-badge {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 600px) {
+            .intro-proof {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .intro-divider {
+                width: 100%;
+                height: 1px;
+            }
         }
 
         /* Mockup da planilha */
@@ -288,133 +402,85 @@
             flex-shrink: 0;
         }
 
-        .sheet-callouts {
-            display: flex;
-            gap: 10px;
-            padding: 16px 16px 0;
-            flex-wrap: wrap;
-        }
-
-        .callout-chip {
-            flex: 1 1 auto;
-            min-width: 150px;
-            font-size: 12px;
-            font-weight: 600;
-            line-height: 1.35;
-            padding: 8px 12px;
-            border-radius: 10px;
-        }
-
-        .callout-chip::after {
-            content: '\2193';
-            display: block;
-            text-align: center;
-            font-weight: 400;
-            opacity: 0.55;
-            margin-top: 2px;
-        }
-
-        .callout-chip.group-a {
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
-
-        .callout-chip.group-b {
-            background: rgba(26, 43, 74, 0.07);
-            color: var(--navy);
-        }
-
-        .callout-chip.group-c {
-            background: #fff7ec;
-            color: #92660f;
-        }
-
         .sheet-table-wrap {
             overflow-x: auto;
-            padding: 12px 16px 4px;
+            padding: 0;
         }
 
         .sheet-table {
             border-collapse: collapse;
             font-size: 12px;
             white-space: nowrap;
+            width: 100%;
         }
 
         .sheet-table th,
         .sheet-table td {
             border: 1px solid var(--border);
-            padding: 8px 10px;
+            padding: 7px 10px;
             text-align: left;
         }
 
-        .sheet-table th {
-            background: #fafafa;
-            font-weight: 600;
-            color: var(--navy);
-            border-top: 3px solid transparent;
+        .sheet-table td {
+            position: relative;
         }
 
-        .sheet-table th.group-a,
+        .sheet-table td:hover {
+            outline: 1.5px solid var(--accent);
+            outline-offset: -1.5px;
+            z-index: 1;
+        }
+
+        .sheet-table th {
+            background: var(--navy);
+            font-weight: 700;
+            color: white;
+            font-size: 11px;
+        }
+
+        .sheet-table th.group-a {
+            background: #0d3f8f;
+        }
+
+        .sheet-table th.group-b {
+            background: var(--navy);
+        }
+
+        .sheet-table th.group-c {
+            background: #6b4e0f;
+        }
+
         .sheet-table td.group-a {
             background: var(--accent-soft);
         }
 
-        .sheet-table th.group-a {
-            border-top-color: var(--accent);
-        }
-
-        .sheet-table th.group-b,
         .sheet-table td.group-b {
             background: rgba(26, 43, 74, 0.045);
         }
 
-        .sheet-table th.group-b {
-            border-top-color: var(--navy);
-        }
-
-        .sheet-table th.group-c,
         .sheet-table td.group-c {
-            background: #fffaf2;
-        }
-
-        .sheet-table th.group-c {
-            border-top-color: #d99a2b;
+            background: #fff7ec;
         }
 
         .sheet-table tbody tr:nth-child(even) td {
-            background-color: rgba(0, 0, 0, 0.015);
+            background-color: rgba(0, 0, 0, 0.018);
         }
 
         .sheet-table tbody tr:nth-child(even) td.group-a {
-            background-color: rgba(20, 98, 245, 0.1);
+            background-color: rgba(20, 98, 245, 0.12);
         }
 
         .sheet-table tbody tr:nth-child(even) td.group-b {
-            background-color: rgba(26, 43, 74, 0.07);
+            background-color: rgba(26, 43, 74, 0.08);
         }
 
         .sheet-table tbody tr:nth-child(even) td.group-c {
-            background-color: #fef3e0;
+            background-color: #fdecd2;
         }
 
-        .status-dot {
-            display: inline-block;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            margin-right: 6px;
-        }
-
-        .status-dot.ok {
-            background: #16a34a;
-        }
-
-        .status-dot.pending {
-            background: #d99a2b;
-        }
-
-        .status-dot.archived {
-            background: #9ca3af;
+        .sheet-table td.status-cell {
+            font-weight: 600;
+            border-radius: 0;
         }
 
         .sheet-table td.doc-link {
@@ -422,17 +488,110 @@
             font-weight: 600;
         }
 
+        .sheet-legend {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 12px 16px 4px;
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .sheet-legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sheet-legend .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .sheet-legend .dot.group-a {
+            background: var(--accent);
+        }
+
+        .sheet-legend .dot.group-b {
+            background: var(--navy);
+        }
+
+        .sheet-legend .dot.group-c {
+            background: #d99a2b;
+        }
+
+        .sheet-table td.status-cell.is-emitido {
+            background-color: #e7f6ec !important;
+            color: #15803d;
+        }
+
+        .sheet-table td.status-cell.is-analise {
+            background-color: #eaf2ff !important;
+            color: #1462f5;
+        }
+
+        .sheet-table td.status-cell.is-aguardando {
+            background-color: #fdeae7 !important;
+            color: #c2410c;
+        }
+
+        .sheet-table td.status-cell.is-arquivado {
+            background-color: #f1f2f4 !important;
+            color: #6b7280;
+        }
+
         .sheet-hint {
             font-size: 11px;
             color: var(--muted);
             text-align: center;
-            padding: 0 16px 14px;
+            padding: 10px 16px 14px;
         }
 
-        @media (max-width: 600px) {
-            .sheet-callouts {
-                flex-direction: column;
-            }
+        .mini-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 0 0 32px;
+        }
+
+        .mini-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .mini-step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .mini-step strong {
+            display: block;
+            font-size: 13px;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+
+        .mini-step span {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
         }
 
         .plans {
@@ -539,8 +698,9 @@
         }
 
         .plan-name {
-            font-size: 17px;
-            font-weight: 700;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 20px;
+            font-weight: 600;
             color: var(--navy);
             margin-bottom: 4px;
         }
@@ -560,7 +720,7 @@
 
         .plan-divider {
             height: 1px;
-            background: var(--border);
+            background: rgba(26, 43, 74, 0.14);
             margin: 16px 0;
         }
 
@@ -583,6 +743,133 @@
         .plan-features li svg {
             flex-shrink: 0;
             margin-top: 1px;
+        }
+
+        .schedule-widget {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .schedule-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            gap: 12px;
+        }
+
+        .schedule-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .schedule-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 4px 12px;
+            border-radius: 12px;
+            white-space: nowrap;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .schedule-days {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .schedule-day {
+            flex: 1;
+            aspect-ratio: 1;
+            max-width: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            background: #e4e9f7;
+            color: #a9b6da;
+            box-shadow: 0 1px 2px rgba(169, 182, 218, 0.25);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+        }
+
+        .schedule-day:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(169, 182, 218, 0.35);
+        }
+
+        .schedule-day.is-weekly {
+            background: var(--navy);
+            color: #ffffff;
+            box-shadow: 0 3px 8px rgba(26, 43, 74, 0.35);
+        }
+
+        .schedule-day.is-daily {
+            background: var(--accent);
+            color: #ffffff;
+            box-shadow: 0 3px 8px rgba(20, 98, 245, 0.35);
+        }
+
+        .schedule-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .schedule-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--muted);
+            transition: opacity 0.2s;
+        }
+
+        .schedule-legend-item strong {
+            color: var(--navy);
+        }
+
+        .schedule-legend .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .schedule-legend .dot.monday {
+            background: var(--navy);
+        }
+
+        .schedule-legend .dot.daily {
+            background: var(--accent);
+        }
+
+        .schedule-legend-item.is-hidden {
+            display: none;
+        }
+
+        .schedule-note {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        @media (max-width: 600px) {
+            .schedule-day {
+                font-size: 13px;
+                max-width: 44px;
+            }
         }
 
         .consent-wrap {
@@ -611,25 +898,16 @@
             margin-top: 2px;
             cursor: pointer;
             transition: border-color 0.15s, background 0.15s;
-            background: white;
-            position: relative;
+            background-color: white;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
         .consent-label input[type="checkbox"]:checked {
-            background: var(--accent);
+            background-color: var(--accent);
             border-color: var(--accent);
-        }
-
-        .consent-label input[type="checkbox"]:checked::after {
-            content: '';
-            position: absolute;
-            left: 3px;
-            top: 1px;
-            width: 8px;
-            height: 5px;
-            border-left: 2px solid white;
-            border-bottom: 2px solid white;
-            transform: rotate(-45deg);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+            background-size: 12px 12px;
         }
 
         .consent-text {
@@ -685,6 +963,75 @@
             flex-shrink: 0;
         }
 
+        .founder-card {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+        }
+
+        .founder-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: opacity 0.15s;
+        }
+
+        .founder-avatar:hover {
+            opacity: 0.85;
+        }
+
+        .founder-card strong {
+            display: block;
+            font-size: 14px;
+            color: var(--navy);
+        }
+
+        .founder-card span {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .avatar-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 16, 30, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 300;
+            cursor: pointer;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .avatar-modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .avatar-modal img {
+            width: min(320px, 70vw);
+            height: min(320px, 70vw);
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transform: scale(0.96);
+            transition: transform 0.25s ease;
+        }
+
+        .avatar-modal.open img {
+            transform: scale(1);
+        }
+
         /* FAQ */
         .faq {
             margin-top: 32px;
@@ -693,7 +1040,7 @@
         .faq-title {
             font-size: 13px;
             font-weight: 600;
-            color: var(--muted);
+            color: var(--navy);
             text-transform: uppercase;
             letter-spacing: 0.06em;
             margin-bottom: 12px;
@@ -705,9 +1052,17 @@
             border-radius: 10px;
             margin-bottom: 8px;
             overflow: hidden;
+            outline: 2px solid transparent;
+            outline-offset: -2px;
+            transition: outline-color 0.15s;
         }
 
-        .faq-item summary {
+        .faq-item:has(.faq-item-summary:hover) {
+            outline-color: var(--border);
+        }
+
+        .faq-item-summary {
+            width: 100%;
             list-style: none;
             cursor: pointer;
             padding: 14px 18px;
@@ -718,13 +1073,13 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
+            background: none;
+            border: none;
+            font-family: inherit;
+            text-align: left;
         }
 
-        .faq-item summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .faq-item summary::after {
+        .faq-item-summary::after {
             content: '+';
             font-size: 18px;
             font-weight: 400;
@@ -733,11 +1088,21 @@
             transition: transform 0.15s;
         }
 
-        .faq-item[open] summary::after {
+        .faq-item.open .faq-item-summary::after {
             content: '\2212';
         }
 
-        .faq-item p {
+        .faq-item-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.open .faq-item-body {
+            max-height: 220px;
+        }
+
+        .faq-item-body p {
             padding: 0 18px 16px;
             font-size: 13px;
             color: var(--muted);
@@ -870,154 +1235,479 @@
         </header>
 
         <main>
-            <div class="container">
+            <!-- Estado 2: Checkout valido -->
+            <div id="state-checkout" class="state">
+                <section class="cko-section">
+                    <div class="container">
+                        <p class="section-label">Assinatura Pulsedge</p>
+                        <h1>Escolha seu plano</h1>
+                        <p class="subtitle">Decida o plano ideal para a sua empresa encontrar mais oportunidades de
+                            negócio. Uma vez escolhido, as movimentações de licenciamento ambiental passam a chegar
+                            direto no seu e-mail, no ritmo da sua assinatura.</p>
 
-                <!-- Estado 2: Checkout valido -->
-                <div id="state-checkout" class="state">
-                    <p class="section-label">Assinatura &mdash; Pulse</p>
-                    <h1>Escolha seu plano</h1>
-                    <p class="subtitle">Inteligência de mercado &mdash; chegue antes da concorrência.</p>
+                        <div class="intro-proof">
+                            <div class="intro-stats">
+                                <div class="intro-stat">
+                                    <strong id="mini-stat-companies">&mdash;</strong>
+                                    <span>Empresas acompanhadas</span>
+                                </div>
+                                <div class="intro-stat">
+                                    <strong id="mini-stat-cities">&mdash;</strong>
+                                    <span>Municípios cobertos</span>
+                                </div>
+                            </div>
+                            <div class="intro-divider"></div>
+                            <div class="intro-map">
+                                <svg viewBox="0 50 380 240" xmlns="http://www.w3.org/2000/svg"
+                                    aria-label="Mapa estilizado do Estado de São Paulo">
+                                    <defs>
+                                        <linearGradient id="intro-map-outline" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#1a2b4a" />
+                                            <stop offset="100%" stop-color="#1462f5" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path
+                                        d="M291.6,222.7 L258.9,239.9 L211.8,281.8 L214.9,278.5 L205.6,268.3 L192.1,271.2 L192.2,255.8 L162.7,255.8 L167.0,242.5 L150.3,222.4 L147.6,194.5 L135.0,183.6 L104.3,186.2 L83.0,174.3 L48.7,168.1 L44.0,174.5 L8.0,171.4 L36.5,152.8 L58.5,120.7 L58.1,111.9 L68.6,103.6 L69.9,91.5 L111.0,58.2 L164.4,64.1 L165.4,77.4 L175.5,72.4 L179.3,83.6 L182.4,72.3 L237.3,64.1 L247.1,74.6 L244.7,84.0 L252.6,92.5 L246.8,101.7 L256.1,123.6 L276.5,125.5 L267.8,159.5 L280.7,169.1 L282.6,183.5 L305.7,182.0 L308.7,170.6 L321.6,173.6 L345.7,163.6 L352.8,171.9 L372.0,174.5 L346.4,187.0 L342.4,196.9 L349.1,202.7 L321.4,213.1 L321.4,221.1 L291.6,222.7 Z"
+                                        fill="rgba(20, 98, 245, 0.05)" stroke="url(#intro-map-outline)" stroke-width="4"
+                                        stroke-linejoin="round" stroke-linecap="round" />
+                                </svg>
+                                <span class="intro-map-badge">Cobertura atual: Estado de São Paulo</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                    <div class="sheet-mockup">
-                        <div class="sheet-mockup-bar">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                <section class="cko-section alt">
+                    <div class="container">
+                        <p class="section-heading">Veja como sua planilha chega</p>
+                        <p class="lead-text">Cada linha é uma oportunidade pronta para abordagem: o processo, o status
+                            e os dados de contato da empresa e do empreendimento, tudo no mesmo lugar &mdash; sem
+                            trabalho de pesquisa.</p>
+
+                        <div class="sheet-mockup">
+                            <div class="sheet-mockup-bar">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <path d="M14 2v6h6" />
+                                </svg>
+                                <span id="sheet-filename">Diario_Processos_Ambientais.xlsx</span> &mdash;&nbsp; exemplo
+                                interativo
+                            </div>
+                            <div class="sheet-table-wrap">
+                                <table class="sheet-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="group-a">Evento</th>
+                                            <th class="group-a">Status Anterior</th>
+                                            <th class="group-a">Status Atual</th>
+                                            <th class="group-a">Detectado em</th>
+                                            <th class="group-a">Tipo de Processo</th>
+                                            <th class="group-a">Solicitação CETESB</th>
+                                            <th class="group-a">Número e-Ambiente</th>
+                                            <th class="group-a">Número SIPOL</th>
+                                            <th class="group-a">Agência CETESB</th>
+                                            <th class="group-a">Protocolado em</th>
+                                            <th class="group-a">Atualizado em</th>
+                                            <th class="group-b">CNPJ</th>
+                                            <th class="group-b">Razão Social</th>
+                                            <th class="group-b">Nome Fantasia</th>
+                                            <th class="group-b">Tipologia</th>
+                                            <th class="group-b">CNAE Principal</th>
+                                            <th class="group-b">CNAEs Secundários</th>
+                                            <th class="group-b">Porte</th>
+                                            <th class="group-b">Fundada em</th>
+                                            <th class="group-b">Natureza Jurídica</th>
+                                            <th class="group-b">Capital Social</th>
+                                            <th class="group-b">Matriz/Filial</th>
+                                            <th class="group-b">Situação Cadastral</th>
+                                            <th class="group-b">Telefones</th>
+                                            <th class="group-b">E-mail</th>
+                                            <th class="group-b">CEP (Empresa)</th>
+                                            <th class="group-b">Logradouro (Empresa)</th>
+                                            <th class="group-b">Número (Empresa)</th>
+                                            <th class="group-b">Complemento (Empresa)</th>
+                                            <th class="group-b">Bairro (Empresa)</th>
+                                            <th class="group-b">Cidade (Empresa)</th>
+                                            <th class="group-b">UF (Empresa)</th>
+                                            <th class="group-c">Nome do Empreendimento</th>
+                                            <th class="group-c">CEP (Empreendimento)</th>
+                                            <th class="group-c">Logradouro (Empreendimento)</th>
+                                            <th class="group-c">Bairro (Empreendimento)</th>
+                                            <th class="group-c">Cidade (Empreendimento)</th>
+                                            <th class="group-c">UF (Empreendimento)</th>
+                                            <th class="group-c">Observação</th>
+                                            <th class="group-c">Documentos disponíveis</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="group-a">Nova Requisição</td>
+                                            <td class="group-a">&mdash;</td>
+                                            <td class="group-a status-cell is-emitido">Emitido</td>
+                                            <td class="group-a">27/06/2026</td>
+                                            <td class="group-a">Certidão de Desmembramento Urbano para Usos Comercial e
+                                                Residencial</td>
+                                            <td class="group-a">93639742</td>
+                                            <td class="group-a">&mdash;</td>
+                                            <td class="group-a">&mdash;</td>
+                                            <td class="group-a">Agência Ambiental de Limeira</td>
+                                            <td class="group-a">26/06/2026</td>
+                                            <td class="group-a">27/06/2026</td>
+                                            <td class="group-b">12.345.678/0001-90</td>
+                                            <td class="group-b">Indústria Exemplo Ltda</td>
+                                            <td class="group-b">Exemplo Galvanizados</td>
+                                            <td class="group-b">Indústria</td>
+                                            <td class="group-b">2542-0/00 - Fabricação de Artigos de Serralheria, Exceto
+                                                Esquadrias</td>
+                                            <td class="group-b">2511-0/00 - Fabricação de Estruturas Metálicas</td>
+                                            <td class="group-b">Pequena Empresa</td>
+                                            <td class="group-b">14/03/2011</td>
+                                            <td class="group-b">Sociedade Empresária Limitada</td>
+                                            <td class="group-b">250.000</td>
+                                            <td class="group-b">Matriz</td>
+                                            <td class="group-b">Ativa</td>
+                                            <td class="group-b">(11) 4002-8922</td>
+                                            <td class="group-b">contato@exemplo.com.br</td>
+                                            <td class="group-b">13480-000</td>
+                                            <td class="group-b">Rua das Indústrias</td>
+                                            <td class="group-b">450</td>
+                                            <td class="group-b">&mdash;</td>
+                                            <td class="group-b">Distrito Industrial</td>
+                                            <td class="group-b">Limeira</td>
+                                            <td class="group-b">SP</td>
+                                            <td class="group-c">Galpão Exemplo I</td>
+                                            <td class="group-c">13480-010</td>
+                                            <td class="group-c">Avenida do Parque Industrial</td>
+                                            <td class="group-c">Distrito Industrial</td>
+                                            <td class="group-c">Limeira</td>
+                                            <td class="group-c">SP</td>
+                                            <td class="group-c">&mdash;</td>
+                                            <td class="group-c doc-link">Ver PDF &#8599;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="group-a">Mudança de Status</td>
+                                            <td class="group-a">Aguardando documentos</td>
+                                            <td class="group-a status-cell is-analise">Em análise</td>
+                                            <td class="group-a">27/06/2026</td>
+                                            <td class="group-a">Licença de Instalação &mdash; MCE</td>
+                                            <td class="group-a">93620258</td>
+                                            <td class="group-a">CETESB.034699/2026-76</td>
+                                            <td class="group-a">&mdash;</td>
+                                            <td class="group-a">Agência Ambiental de Piracicaba</td>
+                                            <td class="group-a">25/05/2026</td>
+                                            <td class="group-a">27/06/2026</td>
+                                            <td class="group-b">98.765.432/0001-10</td>
+                                            <td class="group-b">Agropecuária Modelo S/A</td>
+                                            <td class="group-b">Fazenda Modelo</td>
+                                            <td class="group-b">Agropecuária</td>
+                                            <td class="group-b">0151-2/01 - Criação de Bovinos para Corte</td>
+                                            <td class="group-b">0161-0/03 - Serviço de Preparação de Terreno, Cultivo e
+                                                Colheita</td>
+                                            <td class="group-b">Demais</td>
+                                            <td class="group-b">08/09/2003</td>
+                                            <td class="group-b">Sociedade Anônima Fechada</td>
+                                            <td class="group-b">1.800.000</td>
+                                            <td class="group-b">Matriz</td>
+                                            <td class="group-b">Ativa</td>
+                                            <td class="group-b">(19) 99876-5432</td>
+                                            <td class="group-b">financeiro@modelo.com.br</td>
+                                            <td class="group-b">13400-000</td>
+                                            <td class="group-b">Estrada Municipal SP-191</td>
+                                            <td class="group-b">Km 12</td>
+                                            <td class="group-b">&mdash;</td>
+                                            <td class="group-b">Zona Rural</td>
+                                            <td class="group-b">Piracicaba</td>
+                                            <td class="group-b">SP</td>
+                                            <td class="group-c">Fazenda Modelo</td>
+                                            <td class="group-c">13400-020</td>
+                                            <td class="group-c">Estrada Municipal SP-191</td>
+                                            <td class="group-c">Zona Rural</td>
+                                            <td class="group-c">Piracicaba</td>
+                                            <td class="group-c">SP</td>
+                                            <td class="group-c">&mdash;</td>
+                                            <td class="group-c">&mdash;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="group-a">Mudança de Status</td>
+                                            <td class="group-a">Em análise</td>
+                                            <td class="group-a status-cell is-arquivado">Arquivado</td>
+                                            <td class="group-a">27/06/2026</td>
+                                            <td class="group-a">Parecer Técnico &mdash; GRAPROHAB &mdash; Novos
+                                                Empreendimentos</td>
+                                            <td class="group-a">93357189</td>
+                                            <td class="group-a">CETESB.021900/2025-34</td>
+                                            <td class="group-a">370031225</td>
+                                            <td class="group-a">Agência Ambiental de Sorocaba</td>
+                                            <td class="group-a">17/03/2025</td>
+                                            <td class="group-a">27/06/2026</td>
+                                            <td class="group-b">11.222.333/0001-44</td>
+                                            <td class="group-b">Construtora Horizonte Ltda</td>
+                                            <td class="group-b">Horizonte Empreendimentos</td>
+                                            <td class="group-b">Parcelamento do Solo</td>
+                                            <td class="group-b">4110-7/00 - Incorporação de Empreendimentos
+                                                Imobiliários</td>
+                                            <td class="group-b">4211-1/01 - Construção de Rodovias e Ferrovias</td>
+                                            <td class="group-b">Demais</td>
+                                            <td class="group-b">22/11/2008</td>
+                                            <td class="group-b">Sociedade Empresária Limitada</td>
+                                            <td class="group-b">3.200.000</td>
+                                            <td class="group-b">Matriz</td>
+                                            <td class="group-b">Ativa</td>
+                                            <td class="group-b">(15) 3411-2200</td>
+                                            <td class="group-b">juridico@horizonte.com.br</td>
+                                            <td class="group-b">18087-000</td>
+                                            <td class="group-b">Avenida Engenheiro Carlos Reis</td>
+                                            <td class="group-b">1200</td>
+                                            <td class="group-b">Sala 12</td>
+                                            <td class="group-b">Jardim Vergueiro</td>
+                                            <td class="group-b">Sorocaba</td>
+                                            <td class="group-b">SP</td>
+                                            <td class="group-c">Loteamento Horizonte Sul</td>
+                                            <td class="group-c">18087-120</td>
+                                            <td class="group-c">Avenida Engenheiro Carlos Reis</td>
+                                            <td class="group-c">Jardim Vergueiro</td>
+                                            <td class="group-c">Sorocaba</td>
+                                            <td class="group-c">SP</td>
+                                            <td class="group-c">&mdash;</td>
+                                            <td class="group-c doc-link">Ver PDF &#8599;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="group-a">Mudança de Status</td>
+                                            <td class="group-a">Em análise</td>
+                                            <td class="group-a status-cell is-aguardando">Aguardando documentos</td>
+                                            <td class="group-a">27/06/2026</td>
+                                            <td class="group-a">Licença Prévia &mdash; MCE</td>
+                                            <td class="group-a">93629114</td>
+                                            <td class="group-a">CETESB.040420/2026-28</td>
+                                            <td class="group-a">&mdash;</td>
+                                            <td class="group-a">Agência Ambiental de Cubatão</td>
+                                            <td class="group-a">24/06/2026</td>
+                                            <td class="group-a">27/06/2026</td>
+                                            <td class="group-b">40.420.871/0001-22</td>
+                                            <td class="group-b">Remediação Ambiental Sul Ltda</td>
+                                            <td class="group-b">RAS Ambiental</td>
+                                            <td class="group-b">Remediação de Solo</td>
+                                            <td class="group-b">3900-5/00 - Descontaminação e Outros Serviços de Gestão
+                                                de Resíduos</td>
+                                            <td class="group-b">7120-1/00 - Testes e Análises Técnicas</td>
+                                            <td class="group-b">Pequena Empresa</td>
+                                            <td class="group-b">02/02/2016</td>
+                                            <td class="group-b">Sociedade Empresária Limitada</td>
+                                            <td class="group-b">600.000</td>
+                                            <td class="group-b">Matriz</td>
+                                            <td class="group-b">Ativa</td>
+                                            <td class="group-b">(13) 3221-4490</td>
+                                            <td class="group-b">contato@rasambiental.com.br</td>
+                                            <td class="group-b">11900-000</td>
+                                            <td class="group-b">Rua Industrial</td>
+                                            <td class="group-b">88</td>
+                                            <td class="group-b">&mdash;</td>
+                                            <td class="group-b">Vila Nova</td>
+                                            <td class="group-b">Cubatão</td>
+                                            <td class="group-b">SP</td>
+                                            <td class="group-c">Área Industrial Remediação II</td>
+                                            <td class="group-c">11900-040</td>
+                                            <td class="group-c">Rodovia Cônego Domênico Rangoni</td>
+                                            <td class="group-c">Vila Nova</td>
+                                            <td class="group-c">Cubatão</td>
+                                            <td class="group-c">SP</td>
+                                            <td class="group-c">&mdash;</td>
+                                            <td class="group-c">&mdash;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="sheet-legend">
+                                <span><span class="dot group-a"></span>Processo &amp; status</span>
+                                <span><span class="dot group-b"></span>Dados da empresa</span>
+                                <span><span class="dot group-c"></span>Dados do empreendimento</span>
+                            </div>
+                            <p class="sheet-hint">&larr; deslize para o lado para ver todas as colunas &rarr;</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="cko-section">
+                    <div class="container">
+                        <p class="section-heading">Como funciona</p>
+                        <div class="mini-steps">
+                            <div class="mini-step">
+                                <div class="mini-step-num">1</div>
+                                <div>
+                                    <strong>Acompanhamento diário</strong>
+                                    <span>Cobrimos as movimentações publicadas pela CETESB todos os dias.</span>
+                                </div>
+                            </div>
+                            <div class="mini-step">
+                                <div class="mini-step-num">2</div>
+                                <div>
+                                    <strong>Dados prontos para abordagem</strong>
+                                    <span>CNPJ, contatos e endereço do empreendimento, já cruzados.</span>
+                                </div>
+                            </div>
+                            <div class="mini-step">
+                                <div class="mini-step-num">3</div>
+                                <div>
+                                    <strong>Entrega no seu e-mail</strong>
+                                    <span>Planilha pronta, sem precisar acessar nenhum sistema.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="cko-section alt">
+                    <div class="container">
+                        <p class="section-heading">Planos disponíveis</p>
+                        <div class="plans" id="plans-list"></div>
+
+                        <div class="schedule-widget">
+                            <div class="schedule-header">
+                                <p class="schedule-title">Sua agenda de recebimento</p>
+                                <span class="schedule-badge" id="schedule-badge">Pulse Diário</span>
+                            </div>
+                            <div class="schedule-days" id="schedule-days">
+                                <div class="schedule-day">D</div>
+                                <div class="schedule-day">S</div>
+                                <div class="schedule-day">T</div>
+                                <div class="schedule-day">Q</div>
+                                <div class="schedule-day">Q</div>
+                                <div class="schedule-day">S</div>
+                                <div class="schedule-day">S</div>
+                            </div>
+                            <div class="schedule-legend">
+                                <div class="schedule-legend-item">
+                                    <span class="dot monday"></span>
+                                    <span><strong>Segunda, 7h</strong> &mdash; relatório semanal completo</span>
+                                </div>
+                                <div class="schedule-legend-item" id="schedule-legend-daily">
+                                    <span class="dot daily"></span>
+                                    <span><strong>Terça a sábado, 7h</strong> &mdash; movimentações do dia
+                                        anterior</span>
+                                </div>
+                            </div>
+                            <p class="schedule-note">Horários no fuso de Brasília.</p>
+                        </div>
+
+                        <div class="consent-wrap">
+                            <label class="consent-label">
+                                <input type="checkbox" id="consent-check" />
+                                <span class="consent-text">
+                                    Eu li e concordo com os
+                                    <a href="https://pulsedge.com.br/termos" target="_blank" rel="noopener">Termos de
+                                        Serviço</a>
+                                    e a
+                                    <a href="https://pulsedge.com.br/privacidade" target="_blank"
+                                        rel="noopener">Política de
+                                        Privacidade</a>
+                                    da Pulsedge.
+                                </span>
+                            </label>
+                        </div>
+
+                        <button class="btn-cta" id="btn-subscribe" disabled>
+                            Prosseguir para pagamento &rarr;
+                        </button>
+                        <p class="asaas-note">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <path d="M14 2v6h6" />
+                                <rect x="3" y="11" width="18" height="11" rx="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                             </svg>
-                            Diario_Licencas_Ambientais.xlsx &mdash; exemplo ilustrativo
-                        </div>
-                        <div class="sheet-callouts">
-                            <span class="callout-chip group-a">Monitoramos a CETESB por você</span>
-                            <span class="callout-chip group-b">Dados da empresa, enriquecidos automaticamente</span>
-                            <span class="callout-chip group-c">Tudo rastreável, com o documento oficial</span>
-                        </div>
-                        <div class="sheet-table-wrap">
-                            <table class="sheet-table">
-                                <thead>
-                                    <tr>
-                                        <th class="group-a">Status Atual</th>
-                                        <th class="group-a">Tipo de Processo</th>
-                                        <th class="group-a">Solicitação CETESB</th>
-                                        <th class="group-b">CNPJ</th>
-                                        <th class="group-b">Razão Social</th>
-                                        <th class="group-b">Telefones</th>
-                                        <th class="group-b">E-mail</th>
-                                        <th class="group-c">Nome do Empreendimento</th>
-                                        <th class="group-c">Endereço do Empreendimento</th>
-                                        <th class="group-c">Observação</th>
-                                        <th class="group-c">Documentos disponíveis</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="group-a"><span class="status-dot ok"></span>Emitido</td>
-                                        <td class="group-a">Licença de Operação</td>
-                                        <td class="group-a">90001234</td>
-                                        <td class="group-b">12.345.678/0001-90</td>
-                                        <td class="group-b">Indústria Exemplo Ltda</td>
-                                        <td class="group-b">(11) 4002-8922</td>
-                                        <td class="group-b">contato@exemplo.com.br</td>
-                                        <td class="group-c">Galpão Exemplo I</td>
-                                        <td class="group-c">Limeira, SP</td>
-                                        <td class="group-c">&mdash;</td>
-                                        <td class="group-c doc-link">Ver PDF &#8599;</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="group-a"><span class="status-dot pending"></span>Em análise</td>
-                                        <td class="group-a">Parecer Técnico</td>
-                                        <td class="group-a">90001235</td>
-                                        <td class="group-b">98.765.432/0001-10</td>
-                                        <td class="group-b">Agropecuária Modelo S/A</td>
-                                        <td class="group-b">(19) 99876-5432</td>
-                                        <td class="group-b">financeiro@modelo.com.br</td>
-                                        <td class="group-c">Fazenda Modelo</td>
-                                        <td class="group-c">Piracicaba, SP</td>
-                                        <td class="group-c">&mdash;</td>
-                                        <td class="group-c">&mdash;</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="group-a"><span class="status-dot archived"></span>Arquivado</td>
-                                        <td class="group-a">Certidão de Desmembramento</td>
-                                        <td class="group-a">90001236</td>
-                                        <td class="group-b">11.222.333/0001-44</td>
-                                        <td class="group-b">Construtora Horizonte Ltda</td>
-                                        <td class="group-b">(15) 3411-2200</td>
-                                        <td class="group-b">juridico@horizonte.com.br</td>
-                                        <td class="group-c">Loteamento Horizonte Sul</td>
-                                        <td class="group-c">Sorocaba, SP</td>
-                                        <td class="group-c">Pendência documental</td>
-                                        <td class="group-c doc-link">Ver PDF &#8599;</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p class="sheet-hint">&larr; deslize para o lado para ver todas as colunas &rarr;</p>
+                            Pagamento processado pelo ambiente seguro do Asaas.
+                        </p>
                     </div>
+                </section>
 
-                    <div class="plans" id="plans-list"></div>
-
-                    <div class="consent-wrap">
-                        <label class="consent-label">
-                            <input type="checkbox" id="consent-check" />
-                            <span class="consent-text">
-                                Eu li e concordo com os
-                                <a href="https://pulsedge.com.br/termos" target="_blank" rel="noopener">Termos de
-                                    Serviço</a>
-                                e a
-                                <a href="https://pulsedge.com.br/privacidade" target="_blank" rel="noopener">Política de
-                                    Privacidade</a>
-                                da Pulsedge.
-                            </span>
-                        </label>
+                <section class="cko-section">
+                    <div class="container">
+                        <p class="section-heading">Quem está por trás</p>
+                        <div class="founder-card">
+                            <img class="founder-avatar" id="founder-avatar"
+                                src="https://res.cloudinary.com/dgtq4n4uw/image/upload/v1782614868/vinicius-barbosa-linkedin_gxfgqq.png"
+                                alt="Vinícius Pereira Barbosa">
+                            <div>
+                                <strong>Vinícius Pereira Barbosa</strong>
+                                <span>Fundador e operador da Pulsedge &mdash; Piracicaba, SP, Brasil.</span>
+                            </div>
+                        </div>
                     </div>
+                </section>
 
-                    <button class="btn-cta" id="btn-subscribe" disabled>
-                        Prosseguir para pagamento &rarr;
-                    </button>
-                    <p class="asaas-note">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="3" y="11" width="18" height="11" rx="2" />
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg>
-                        Pagamento processado pelo ambiente seguro do Asaas.
-                    </p>
-
-                    <div class="faq">
-                        <p class="faq-title">Perguntas frequentes</p>
-                        <details class="faq-item">
-                            <summary>Posso cancelar quando quiser?</summary>
-                            <p>Sim, a qualquer momento, sem multa, solicitando por e-mail. O cancelamento interrompe
-                                a renovação automática do próximo período; o acesso ao serviço é mantido até o fim do
-                                período já pago.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary>O pagamento é seguro?</summary>
-                            <p>Sim. O processamento é feito pelo Asaas, gateway de pagamentos regulado, com cartão,
-                                PIX ou boleto. A Pulsedge não armazena dados de cartão.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary>Eu recebo nota fiscal da assinatura?</summary>
-                            <p>Sim. Toda cobrança mensal &mdash; semanal ou diária &mdash; gera uma nota fiscal de
-                                serviço emitida do CNPJ da Pulsedge para o CNPJ da sua empresa, processada
-                                automaticamente pelo Asaas.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary>De onde vêm os dados das planilhas?</summary>
-                            <p>Coletamos diariamente o portal público da CETESB e enriquecemos cada registro com
-                                dados públicos da Receita Federal e da plataforma e-Ambiente.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary>O que muda depois que eu assinar?</summary>
-                            <p>Você passa a receber, por e-mail, a planilha Excel com as movimentações nos horários
-                                do plano escolhido — sem instalar nada ou acessar qualquer painel.</p>
-                        </details>
+                <section class="cko-section alt">
+                    <div class="container">
+                        <div class="faq">
+                            <p class="faq-title">Perguntas frequentes</p>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">De onde vêm os dados das
+                                    planilhas?</button>
+                                <div class="faq-item-body">
+                                    <p>Do portal público da CETESB, que acompanhamos todos os dias. Cada empresa
+                                        identificada é cruzada com dados públicos da Receita Federal e da plataforma
+                                        e-Ambiente, para que a planilha já chegue pronta para uso &mdash; sem você
+                                        precisar fazer essa busca manualmente.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">Os dados são exclusivos da
+                                    Pulsedge?</button>
+                                <div class="faq-item-body">
+                                    <p>Não. São dados públicos &mdash; qualquer empresa pode acessá-los diretamente nos
+                                        portais oficiais. O que a Pulsedge oferece é a automação dessa busca, entregue
+                                        pronta no seu e-mail, todos os dias.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">O que muda depois que eu
+                                    assinar?</button>
+                                <div class="faq-item-body">
+                                    <p>Você passa a receber, por e-mail, a planilha com as movimentações no ritmo do
+                                        plano escolhido &mdash; sem precisar instalar nada ou acessar qualquer painel.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">Posso trocar de plano depois?</button>
+                                <div class="faq-item-body">
+                                    <p>Sim. Fale com o suporte e fazemos a troca entre o Pulse Semanal e o Pulse Diário
+                                        a
+                                        partir do próximo ciclo de cobrança.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">Posso cancelar quando quiser?</button>
+                                <div class="faq-item-body">
+                                    <p>Sim, a qualquer momento, sem multa &mdash; basta avisar por e-mail. O
+                                        cancelamento
+                                        interrompe a renovação automática do próximo ciclo; você continua recebendo as
+                                        entregas até o fim do período já pago.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">O pagamento é seguro?</button>
+                                <div class="faq-item-body">
+                                    <p>Sim. O processamento é feito pelo Asaas, gateway de pagamentos regulado, com
+                                        cartão, PIX ou boleto. A Pulsedge não armazena dados de cartão.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">Eu recebo nota fiscal da
+                                    assinatura?</button>
+                                <div class="faq-item-body">
+                                    <p>Sim. Toda cobrança &mdash; do Pulse Semanal ou do Pulse Diário &mdash; gera
+                                        automaticamente uma nota fiscal de serviço, emitida do CNPJ da Pulsedge para o
+                                        CNPJ da sua empresa, via Asaas.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
+            </div>
 
-                <!-- Estado 3: Link expirado -->
-                <div id="state-expired" class="state">
+            <!-- Estado 3: Link expirado -->
+            <div id="state-expired" class="state">
+                <div class="state-msg-wrap">
                     <svg class="expired-illustration" width="180" height="160" viewBox="0 0 180 160" fill="none"
                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <ellipse cx="90" cy="100" rx="44" ry="52" fill="#e8f0fe" transform="rotate(-18 90 100)" />
@@ -1063,9 +1753,11 @@
                         Falar com o suporte
                     </a>
                 </div>
+            </div>
 
-                <!-- Estado 4: Erro tecnico -->
-                <div id="state-error" class="state">
+            <!-- Estado 4: Erro tecnico -->
+            <div id="state-error" class="state">
+                <div class="state-msg-wrap">
                     <div class="error-icon" aria-hidden="true">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -1079,7 +1771,6 @@
                             href="mailto:suporte@pulsedge.com.br">suporte@pulsedge.com.br</a>.</p>
                     <a class="btn-contact" href="mailto:suporte@pulsedge.com.br">Falar com o suporte</a>
                 </div>
-
             </div>
         </main>
 
@@ -1120,6 +1811,11 @@
                 <polyline points="5 12 12 5 19 12" />
             </svg>
         </button>
+
+        <div class="avatar-modal" id="avatar-modal">
+            <img src="https://res.cloudinary.com/dgtq4n4uw/image/upload/v1782614868/vinicius-barbosa-linkedin_gxfgqq.png"
+                alt="Vinícius Pereira Barbosa">
+        </div>
     </div>
 
     <script>
@@ -1127,14 +1823,14 @@
             weekly: {
                 id: 'weekly',
                 name: 'Pulse Semanal',
-                badge: 'Básico',
+                badge: 'Essencial',
                 badgeHighlight: false,
                 period: '/ mês',
                 features: [
-                    'Entrega toda segunda-feira às 7h (horário de Brasília)',
-                    'Resumo semanal completo das movimentações',
-                    'Planilha Excel com dados enriquecidos (CNPJ, contatos, endereço, CNAE)',
                     'Monitoramento do portal CETESB',
+                    'Entrega toda segunda-feira às 7h (horário de Brasília)',
+                    'Relatório semanal completo das movimentações',
+                    'Planilha Excel com dados enriquecidos (CNPJ, contatos, endereço, CNAE)',
                     'Nota fiscal de serviço emitida em todo ciclo mensal',
                 ],
             },
@@ -1146,14 +1842,34 @@
                 period: '/ mês',
                 features: [
                     'Tudo do Pulse Semanal',
-                    'Entregas de terça a sábado às 7h (horário de Brasília) com movimentações do dia anterior',
-                    'Cobertura diária para não perder nenhuma oportunidade',
+                    'Entregas de terça a sábado às 7h (horário de Brasília)',
+                    'Resumo diário das movimentações do dia anterior',
+                    'Até 6 dias de vantagem sobre quem só recebe no relatório semanal',
                 ],
             },
         };
 
         function formatPrice(value) {
             return 'R$ ' + Number(value).toFixed(2).replace('.', ',').replace(',00', '');
+        }
+
+        function formatInt(n) {
+            return Number(n).toLocaleString('pt-BR');
+        }
+
+        function animateCount(el, target, duration = 3000) {
+            const start = performance.now();
+
+            function tick(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 7);
+                const value = Math.max(1, Math.round(eased * target));
+                el.textContent = formatInt(value) + '+';
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                }
+            }
+            requestAnimationFrame(tick);
         }
 
         async function validateLink(leadLinkId) {
@@ -1227,6 +1943,7 @@
                 container.appendChild(card);
             });
 
+            updateScheduleWidget(selectedPlan ? selectedPlan.id : 'daily');
             updateCTA();
         }
 
@@ -1237,7 +1954,19 @@
                 card.classList.toggle('selected', sel);
                 card.setAttribute('aria-checked', sel ? 'true' : 'false');
             });
+            updateScheduleWidget(planId);
             updateCTA();
+        }
+
+        function updateScheduleWidget(planId) {
+            const isDaily = planId === 'daily';
+            document.querySelectorAll('.schedule-day').forEach((el, i) => {
+                el.classList.remove('is-weekly', 'is-daily');
+                if (i === 1) el.classList.add('is-weekly');
+                else if (isDaily && i >= 2 && i <= 6) el.classList.add('is-daily');
+            });
+            document.getElementById('schedule-badge').textContent = isDaily ? 'Pulse Diário' : 'Pulse Semanal';
+            document.getElementById('schedule-legend-daily').classList.toggle('is-hidden', !isDaily);
         }
 
         function updateCTA() {
@@ -1248,11 +1977,38 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('footer-year').textContent = new Date().getFullYear();
 
+            const sheetDate = new Date();
+            sheetDate.setDate(sheetDate.getDate() - 3);
+            const datePrefix = sheetDate.toISOString().slice(0, 10);
+            document.getElementById('sheet-filename').textContent = `${datePrefix}_Diario_Processos_Ambientais.xlsx`;
+
+            fetch('https://api.pulsedge.com.br/stats')
+                .then(res => res.ok ? res.json() : Promise.reject())
+                .then(data => {
+                    animateCount(document.getElementById('mini-stat-companies'), data.companies);
+                    animateCount(document.getElementById('mini-stat-cities'), data.cities);
+                })
+                .catch(() => { });
+
+            const avatarModal = document.getElementById('avatar-modal');
+            document.getElementById('founder-avatar').addEventListener('click', () => {
+                avatarModal.classList.add('open');
+            });
+            avatarModal.addEventListener('click', () => {
+                avatarModal.classList.remove('open');
+            });
+
             const backToTop = document.getElementById('back-to-top');
             window.addEventListener('scroll', () => {
                 backToTop.classList.toggle('visible', window.scrollY > 400);
             }, { passive: true });
             backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            document.querySelectorAll('.faq-item-summary').forEach(summary => {
+                summary.addEventListener('click', () => {
+                    summary.closest('.faq-item').classList.toggle('open');
+                });
+            });
 
             document.getElementById('consent-check').addEventListener('change', updateCTA);
             document.getElementById('btn-subscribe').addEventListener('click', () => {

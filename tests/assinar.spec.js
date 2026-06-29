@@ -10,7 +10,14 @@ async function mockSubscribe(page, status, body) {
     });
 }
 
+async function mockStats(page) {
+    await page.route('https://api.pulsedge.com.br/stats', route => {
+        route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ companies: 1234, cities: 7 }) });
+    });
+}
+
 async function mockValidLink(page) {
+    await mockStats(page);
     await mockSubscribe(page, 200, {
         weekly_plan_price: 297,
         daily_plan_price: 397,
@@ -37,6 +44,20 @@ test.describe('assinar.html — link valido', () => {
         await expect(weekly.locator('.plan-price')).toContainText('R$ 297');
     });
 
+    test('modal da foto do fundador abre ao clicar no avatar e fecha ao clicar na modal', async ({ page }) => {
+        await mockValidLink(page);
+        await page.goto('/assinar?l=lead123');
+
+        const modal = page.locator('#avatar-modal');
+        await expect(modal).not.toHaveClass(/open/);
+
+        await page.locator('#founder-avatar').click();
+        await expect(modal).toHaveClass(/open/);
+
+        await modal.click();
+        await expect(modal).not.toHaveClass(/open/);
+    });
+
     test('botao de assinar so habilita com plano selecionado + checkbox marcado', async ({ page }) => {
         await mockValidLink(page);
         await page.goto('/assinar?l=lead123');
@@ -60,6 +81,21 @@ test.describe('assinar.html — link valido', () => {
         await expect(page.locator('.plan-card[data-plan-id="daily"]')).not.toHaveClass(/selected/);
     });
 
+    test('agenda de recebimento reage a troca de plano', async ({ page }) => {
+        await mockValidLink(page);
+        await page.goto('/assinar?l=lead123');
+
+        await expect(page.locator('#schedule-badge')).toHaveText('Pulse Diário');
+        await expect(page.locator('.schedule-day.is-daily')).toHaveCount(5);
+        await expect(page.locator('#schedule-legend-daily')).toBeVisible();
+
+        await page.locator('.plan-card[data-plan-id="weekly"]').click();
+        await expect(page.locator('#schedule-badge')).toHaveText('Pulse Semanal');
+        await expect(page.locator('.schedule-day.is-daily')).toHaveCount(0);
+        await expect(page.locator('.schedule-day.is-weekly')).toHaveCount(1);
+        await expect(page.locator('#schedule-legend-daily')).toBeHidden();
+    });
+
     test('ao confirmar, redireciona para o link de pagamento do plano selecionado', async ({ page }) => {
         await mockValidLink(page);
         await page.route(DAILY_LINK, route => route.fulfill({ status: 200, contentType: 'text/html', body: '<html>ok</html>' }));
@@ -75,13 +111,13 @@ test.describe('assinar.html — link valido', () => {
         await page.goto('/assinar?l=lead123');
 
         const firstItem = page.locator('.faq-item').first();
-        await expect(firstItem).not.toHaveAttribute('open', '');
+        await expect(firstItem).not.toHaveClass(/open/);
 
-        await firstItem.locator('summary').click();
-        await expect(firstItem).toHaveAttribute('open', '');
+        await firstItem.locator('.faq-item-summary').click();
+        await expect(firstItem).toHaveClass(/open/);
 
-        await firstItem.locator('summary').click();
-        await expect(firstItem).not.toHaveAttribute('open', '');
+        await firstItem.locator('.faq-item-summary').click();
+        await expect(firstItem).not.toHaveClass(/open/);
     });
 
     test('checkbox de consentimento aponta para termos e privacidade', async ({ page }) => {
@@ -95,6 +131,7 @@ test.describe('assinar.html — link valido', () => {
 
 test.describe('assinar.html — link invalido/expirado', () => {
     test('422 mostra a tela de link expirado', async ({ page }) => {
+        await mockStats(page);
         await mockSubscribe(page, 422, {});
         await page.goto('/assinar?l=lead-expirado');
 
@@ -103,6 +140,7 @@ test.describe('assinar.html — link invalido/expirado', () => {
     });
 
     test('sem parametro l tambem mostra tela de expirado', async ({ page }) => {
+        await mockStats(page);
         await page.goto('/assinar');
         await expect(page.locator('#state-expired')).toHaveClass(/active/);
     });
@@ -110,6 +148,7 @@ test.describe('assinar.html — link invalido/expirado', () => {
 
 test.describe('assinar.html — erro tecnico', () => {
     test('falha 500 da API mostra tela de erro', async ({ page }) => {
+        await mockStats(page);
         await mockSubscribe(page, 500, {});
         await page.goto('/assinar?l=lead123');
 
