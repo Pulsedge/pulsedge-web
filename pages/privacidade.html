@@ -417,6 +417,19 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/super-so/super-so.github.io@master/Floating-TOC/floating-v2.css">
+    <style>
+        :root {
+            --floating-toc-scroll-offset: 104px;
+            --floating-toc-line-color: rgba(55, 53, 47, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding-right: 56px;
+            }
+        }
+    </style>
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
@@ -446,8 +459,8 @@
             <div class="container">
 
                 <p class="doc-label">Documento Legal</p>
-                <h1>Política de Privacidade</h1>
-                <p class="updated">Última atualização: 29 de junho de 2026</p>
+                <h1 class="notion-heading">Política de Privacidade</h1>
+                <p class="updated">Última atualização: 28 de junho de 2026</p>
 
                 <p><strong>Valorizamos e respeitamos sua privacidade.</strong> Esta política explica como coletamos,
                     usamos e protegemos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados
@@ -458,7 +471,7 @@
                     <a href="mailto:juridico@pulsedge.com.br">juridico@pulsedge.com.br</a>.
                 </p>
 
-                <h2>1. Dados dos Assinantes que Coletamos</h2>
+                <h2 class="notion-heading">1. Dados dos Assinantes que Coletamos</h2>
                 <p>Os seguintes dados são coletados diretamente dos assinantes no momento da contratação:</p>
 
                 <div class="table-wrap">
@@ -508,7 +521,7 @@
                         cobrança.</p>
                 </div>
 
-                <h2>2. Dados de Terceiros que Processamos</h2>
+                <h2 class="notion-heading">2. Dados de Terceiros que Processamos</h2>
                 <p>O serviço Pulsedge coleta e processa dados de empresas e seus responsáveis a partir de fontes
                     públicas, para fins de inteligência de mercado entregue aos assinantes. As fontes utilizadas são:
                 </p>
@@ -529,7 +542,7 @@
                         exercer seus direitos pelo canal indicado na Seção 7 desta política.</p>
                 </div>
 
-                <h2>3. Como Usamos os Dados dos Assinantes</h2>
+                <h2 class="notion-heading">3. Como Usamos os Dados dos Assinantes</h2>
                 <ul>
                     <li>Envio de e-mails com planilhas de inteligência (entrega do serviço contratado).</li>
                     <li>Processamento de pagamentos mensais recorrentes.</li>
@@ -538,30 +551,31 @@
                     <li>Cumprimento de obrigações legais e fiscais.</li>
                 </ul>
 
-                <h2>4. Compartilhamento de Dados</h2>
+                <h2 class="notion-heading">4. Compartilhamento de Dados</h2>
                 <p><strong>Não vendemos nem compartilhamos dados pessoais para fins de marketing de terceiros.</strong>
                 </p>
                 <p>Os dados dos assinantes são compartilhados somente com:</p>
                 <ul>
                     <li><strong>Asaas</strong> — gateway de pagamentos e emissão de notas fiscais (apenas dados
                         necessários para cobrança e faturamento).</li>
-                    <li><strong>Google Workspace</strong> — serviço de envio dos e-mails com as planilhas.</li>
+                    <li><strong>Provedores de infraestrutura de e-mail</strong> (atualmente Google Workspace) —
+                        utilizados para envio das comunicações e dos entregáveis.</li>
                     <li><strong>Autoridades competentes</strong> — quando exigido por lei, regulamento ou ordem
                         judicial.</li>
                 </ul>
 
-                <h2>5. Armazenamento e Segurança</h2>
+                <h2 class="notion-heading">5. Armazenamento e Segurança</h2>
                 <ul>
                     <li><strong>Processamento:</strong> infraestrutura de nuvem.</li>
-                    <li><strong>Banco de dados e arquivos:</strong> banco de dados relacional e armazenamento de
-                        planilhas em nuvem.</li>
+                    <li><strong>Banco de dados e arquivos:</strong> infraestrutura segura de armazenamento em
+                        nuvem.</li>
                     <li><strong>Criptografia:</strong> dados em trânsito protegidos por HTTPS/TLS.</li>
                     <li><strong>Acesso:</strong> restrito ao operador do serviço (Vinícius Pereira Barbosa).</li>
                     <li><strong>Backup:</strong> cópias de segurança realizadas periodicamente em nuvem.</li>
                     <li><strong>Monitoramento:</strong> erros e incidentes monitorados por ferramenta dedicada de
                         observabilidade.</li>
                     <li><strong>Transferência internacional:</strong> alguns dos prestadores de infraestrutura,
-                        e-mail (Google Workspace) e monitoramento utilizados pela Pulsedge podem processar ou
+                        e-mail e monitoramento utilizados pela Pulsedge podem processar ou
                         armazenar dados em servidores localizados fora do Brasil. Esse tratamento é realizado com
                         base no legítimo interesse e na execução do contrato (Art. 7º, V e IX da LGPD), e os
                         prestadores envolvidos adotam padrões internacionais de proteção de dados e segurança da
@@ -576,7 +590,7 @@
                         as medidas técnicas adotadas e as recomendações ao titular.</p>
                 </div>
 
-                <h2>6. Retenção de Dados</h2>
+                <h2 class="notion-heading">6. Retenção de Dados</h2>
                 <ul>
                     <li><strong>Durante a assinatura:</strong> todos os dados necessários à prestação do serviço
                         são mantidos.</li>
@@ -588,7 +602,7 @@
                         da coleta, após o qual são excluídos da base de dados da Pulsedge.</li>
                 </ul>
 
-                <h2>7. Seus Direitos (LGPD)</h2>
+                <h2 class="notion-heading">7. Seus Direitos (LGPD)</h2>
                 <p>Como titular de dados, você tem direito a:</p>
                 <ul>
                     <li><strong>Confirmação e acesso</strong> — saber se processamos seus dados e acessá-los.</li>
@@ -613,18 +627,21 @@
                     nas planilhas (empresas ou seus responsáveis cujos dados procedam de fontes públicas) que
                     desejem exercer seus direitos.</p>
 
-                <h2>8. Cookies e Tecnologias Similares</h2>
-                <p>A Pulsedge não utiliza cookies em seu site institucional. A página de assinatura pode utilizar
-                    armazenamento de sessão estritamente necessário ao funcionamento do fluxo de checkout. Caso
-                    implementemos cookies analíticos no futuro, esta política será atualizada e os assinantes
-                    serão notificados.</p>
+                <h2 class="notion-heading">8. Cookies e Tecnologias Similares</h2>
+                <p>A Pulsedge não utiliza cookies em seu site institucional. Utilizamos o Vercel Web Analytics,
+                    ferramenta de mensuração de audiência que não usa cookies nem identificadores persistentes —
+                    coleta apenas dados agregados e anonimizados (ex.: número de visitas, página de origem), sem
+                    rastrear o usuário individualmente. A página de assinatura pode utilizar armazenamento de
+                    sessão estritamente necessário ao funcionamento do fluxo de checkout. Caso implementemos
+                    cookies analíticos no futuro (ex.: ferramentas de mapa de calor ou gravação de sessão), esta
+                    política será atualizada e os assinantes serão notificados.</p>
 
-                <h2>9. Encarregado de Dados (DPO)</h2>
+                <h2 class="notion-heading">9. Encarregado de Dados (DPO)</h2>
                 <p>Nos termos do art. 41 da LGPD, o encarregado de dados (DPO) da Pulsedge é:</p>
                 <p><strong>Vinícius Pereira Barbosa</strong><br>
                     E-mail: <a href="mailto:juridico@pulsedge.com.br">juridico@pulsedge.com.br</a></p>
 
-                <h2>10. Alterações nesta Política</h2>
+                <h2 class="notion-heading">10. Alterações nesta Política</h2>
                 <p>Esta Política de Privacidade pode ser atualizada periodicamente. Mudanças significativas serão
                     comunicadas por e-mail com antecedência mínima de 15 (quinze) dias. A versão sempre vigente
                     é a publicada nesta página.</p>
@@ -687,6 +704,44 @@
         });
 
     </script>
+    <script src="https://cdn.jsdelivr.net/gh/super-so/super-so.github.io@master/Floating-TOC/floating-v2.js"></script>
+    <style>
+        .super-floating-toc {
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+        }
+
+        @media (min-width: 769px) {
+            .super-floating-toc {
+                --floating-toc-panel-width: clamp(190px, 16vw, 240px);
+                --floating-toc-panel-max-height: min(48vh, 360px);
+                --floating-toc-panel-padding: 13px 15px;
+                --floating-toc-font-size: 13px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .super-floating-toc {
+                bottom: auto !important;
+            }
+
+            .super-floating-toc__button {
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            .super-floating-toc__panel {
+                top: 50% !important;
+                bottom: auto !important;
+                transform: translateY(-50%) scale(0.98) !important;
+            }
+
+            .super-floating-toc.is-open:not(.is-mobile-force-closed) .super-floating-toc__panel {
+                transform: translateY(-50%) scale(1) !important;
+            }
+        }
+    </style>
 </body>
 
 </html>

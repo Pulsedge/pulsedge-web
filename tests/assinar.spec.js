@@ -192,10 +192,12 @@ test.describe('assinar.html — link valido', () => {
         });
         await page.waitForTimeout(100);
         await expect(stickyCta).toHaveClass(/visible/);
-        await expect(page.locator('#sticky-plan-name')).toHaveText('Pulse Diário');
+        await expect(page.locator('#sticky-plan-name')).toHaveText('PULSE DIÁRIO', { useInnerText: true });
+        expect(await page.locator('#sticky-plan-name').innerHTML()).toBe('Pulse <br class="plan-name-break">Diário');
 
         await page.locator('.plan-card[data-plan-id="weekly"]').click();
-        await expect(page.locator('#sticky-plan-name')).toHaveText('Pulse Semanal');
+        await expect(page.locator('#sticky-plan-name')).toHaveText('PULSE SEMANAL', { useInnerText: true });
+        expect(await page.locator('#sticky-plan-name').innerHTML()).toBe('Pulse <br class="plan-name-break">Semanal');
     });
 
     test('clicar na barra fixa sem consentimento rola para os planos e pisca o consentimento', async ({ page }) => {

@@ -380,6 +380,19 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/super-so/super-so.github.io@master/Floating-TOC/floating-v2.css">
+    <style>
+        :root {
+            --floating-toc-scroll-offset: 104px;
+            --floating-toc-line-color: rgba(55, 53, 47, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding-right: 56px;
+            }
+        }
+    </style>
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
@@ -409,10 +422,10 @@
             <div class="container">
 
                 <p class="doc-label">Documento Legal</p>
-                <h1>Termos de Serviço</h1>
-                <p class="updated">Última atualização: 29 de junho de 2026</p>
+                <h1 class="notion-heading">Termos de Serviço</h1>
+                <p class="updated">Última atualização: 28 de junho de 2026</p>
 
-                <h2>1. Do Serviço e Partes</h2>
+                <h2 class="notion-heading">1. Do Serviço e Partes</h2>
                 <p>A Pulsedge é um serviço de monitoramento automatizado de licenças ambientais do Estado de São Paulo,
                     operado por <strong>Vinícius Pereira Barbosa — MEI</strong>, CNPJ 65.606.332/0001-60. Para suporte
                     operacional, utilize <a href="mailto:suporte@pulsedge.com.br">suporte@pulsedge.com.br</a>; para
@@ -429,19 +442,13 @@
                     <p><strong>Destinação exclusiva a pessoas jurídicas.</strong> A Pulsedge destina-se exclusivamente
                         a pessoas jurídicas e profissionais no exercício de sua atividade empresarial. Não se aplicam
                         as disposições do Código de Defesa do Consumidor relativas a relações de consumo, em especial
-                        o direito de arrependimento previsto no art. 49 do CDC.</p>
+                        o direito de arrependimento previsto no art. 49 do CDC. A contratação deve ser realizada com
+                        o CNPJ da pessoa jurídica contratante; pagamentos identificados com CPF, sem vínculo a uma
+                        pessoa jurídica como parte contratante, não habilitam o acesso ao serviço, conforme a Seção
+                        4.</p>
                 </div>
 
-                <div class="highlight">
-                    <p><strong>Acesso por convite e ausência de exclusividade.</strong> No estágio atual, o acesso à
-                        Pulsedge ocorre exclusivamente por convite/prospecção direta realizada pelo operador do
-                        serviço. A Pulsedge não garante exclusividade de uso — por segmento, região ou qualquer
-                        outro critério — a nenhum assinante, e reserva-se o direito de, a qualquer momento e sem
-                        necessidade de aviso prévio ou autorização, abrir a contratação do serviço ao público em
-                        geral, inclusive a concorrentes do assinante.</p>
-                </div>
-
-                <h2>2. Dos Planos Disponíveis</h2>
+                <h2 class="notion-heading">2. Dos Planos Disponíveis</h2>
                 <ul>
                     <li><strong>Pulse Semanal:</strong> Relatório completo enviado toda segunda-feira às 7h (horário
                         de Brasília) com mudanças da semana anterior.</li>
@@ -453,7 +460,7 @@
                         A troca passa a valer a partir do próximo ciclo de cobrança.</li>
                 </ul>
 
-                <h2>3. Do Pagamento</h2>
+                <h2 class="notion-heading">3. Do Pagamento</h2>
                 <ul>
                     <li>Cobrança mensal antecipada via boleto, PIX ou cartão de crédito, processada pelo gateway
                         Asaas. A Pulsedge não armazena dados de cartão de crédito — esse processamento é de
@@ -479,7 +486,7 @@
                     </li>
                 </ul>
 
-                <h2>4. Do Cancelamento e Reembolso</h2>
+                <h2 class="notion-heading">4. Do Cancelamento e Reembolso</h2>
                 <ul>
                     <li>O assinante pode cancelar a qualquer momento, independentemente do dia do mês, sem multa
                         ou taxa, por meio de solicitação ao
@@ -516,9 +523,18 @@
                         destes Termos de Serviço — incluindo, mas não se limitando a, compartilhamento não
                         autorizado do acesso ou das planilhas com terceiros (Seção 8) e uso indevido dos dados
                         recebidos (Seção 7).</li>
+                    <li><strong>Pagamento identificado com CPF em vez de CNPJ:</strong> conforme a Seção 1, a
+                        Pulsedge é um serviço destinado exclusivamente a pessoas jurídicas. Caso o pagamento seja
+                        identificado com CPF, sem vínculo a uma pessoa jurídica como parte contratante, a
+                        assinatura não será ativada e o acesso ao serviço não será disponibilizado. Nesse caso, a
+                        Pulsedge solicitará ao Asaas o estorno do valor pago em até 5 (cinco) dias úteis a partir
+                        da identificação da inconsistência. Esse prazo refere-se exclusivamente à solicitação de
+                        estorno pela Pulsedge junto ao Asaas — o prazo de efetivação do crédito ao pagador depende
+                        do meio de pagamento utilizado e de prazos próprios do Asaas e das instituições
+                        financeiras envolvidas, sobre os quais a Pulsedge não tem controle.</li>
                 </ul>
 
-                <h2>5. Da Entrega do Serviço</h2>
+                <h2 class="notion-heading">5. Da Entrega do Serviço</h2>
                 <ul>
                     <li>E-mails enviados nos horários estabelecidos (7h, horário de Brasília).</li>
                     <li>Planilhas em formato .xlsx, enviadas como anexo e disponibilizadas também via link de
@@ -526,6 +542,14 @@
                     <li>Os links de download das planilhas enviados por e-mail permanecem ativos por 30 (trinta)
                         dias a partir do envio. Após esse prazo, o acesso à planilha correspondente só é possível
                         através do arquivo anexado ao próprio e-mail.</li>
+                    <li><strong>Falha técnica na entrega do e-mail:</strong> em caso de não recebimento do e-mail
+                        por motivo técnico (ex.: falhas de entrega, classificação como spam, indisponibilidade do
+                        provedor de e-mail do assinante ou do remetente), o assinante pode solicitar o reenvio da
+                        planilha correspondente em até 30 (trinta) dias a partir da data programada de envio, por
+                        meio do <a href="mailto:suporte@pulsedge.com.br">suporte@pulsedge.com.br</a>. A Pulsedge
+                        não garante a entrega do e-mail quando o problema decorrer de fatores fora de seu
+                        controle, como configurações de segurança, filtros de spam ou caixa de entrada do
+                        destinatário.</li>
                     <li>Dados coletados exclusivamente de fontes públicas oficiais: CETESB, plataforma e-Ambiente
                         e Receita Federal do Brasil.</li>
                     <li>Um sistema de verificação automática ("format-check") é executado diariamente para monitorar
@@ -533,12 +557,16 @@
                         para manutenção.</li>
                 </ul>
 
-                <h2>6. Das Limitações e Isenção de Responsabilidade</h2>
+                <h2 class="notion-heading">6. Das Limitações e Isenção de Responsabilidade</h2>
                 <div class="highlight">
                     <p><strong>A Pulsedge é uma ferramenta de inteligência comercial baseada em dados públicos.</strong>
-                        Não garantimos fechamento de vendas, conversão de leads ou qualquer resultado comercial
-                        específico. As informações entregues são extraídas de fontes públicas e podem estar sujeitas
-                        a imprecisões ou desatualizações decorrentes das próprias fontes.</p>
+                        A assinatura concede acesso contínuo ao serviço de monitoramento e inteligência comercial,
+                        não à aquisição de uma quantidade específica de oportunidades. Não garantimos fechamento de
+                        vendas, conversão de leads ou qualquer resultado comercial específico. A Pulsedge interpreta,
+                        organiza e enriquece informações públicas, mas não altera nem controla os dados publicados
+                        pelos órgãos oficiais — as informações entregues refletem o que estava disponível no
+                        momento da coleta e podem estar sujeitas a imprecisões, desatualizações ou alterações
+                        supervenientes promovidas pelas próprias fontes.</p>
                 </div>
                 <ul>
                     <li>Os dados estão sujeitos à disponibilidade, precisão e integridade das fontes públicas
@@ -546,6 +574,11 @@
                     <li>O serviço pode ter interrupções técnicas programadas ou não programadas para manutenção.</li>
                     <li>Campos ausentes nas planilhas são esperados e decorrentes da ausência de informação nas
                         fontes consultadas.</li>
+                    <li><strong>Variação no volume de oportunidades:</strong> o volume de oportunidades entregues
+                        reflete diretamente a movimentação real publicada pela CETESB no período, que pode variar
+                        — inclusive chegando a zero novas oportunidades em um envio —, especialmente em feriados,
+                        fins de ano e outros períodos de menor atividade dos órgãos públicos. Isso não constitui
+                        falha na prestação do serviço.</li>
                     <li><strong>Identificação do interessado (CNPJ):</strong> o enriquecimento de dados é
                         realizado a partir da razão social informada pela CETESB na solicitação, que pode ser
                         imprecisa ou incompleta. Por esse motivo, o CNPJ apontado como interessado no
@@ -574,7 +607,7 @@
                             ainda que tenha sido alertada sobre a possibilidade de tais danos.</strong></li>
                 </ul>
 
-                <h2>7. Das Obrigações do Assinante</h2>
+                <h2 class="notion-heading">7. Das Obrigações do Assinante</h2>
                 <ul>
                     <li>O assinante é o único responsável pelo uso das informações recebidas, incluindo a
                         conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018) no tratamento
@@ -590,16 +623,25 @@
                         entregues.</li>
                 </ul>
 
-                <h2>8. Da Propriedade Intelectual</h2>
+                <h2 class="notion-heading">8. Da Propriedade Intelectual e das Condições Comerciais</h2>
                 <ul>
                     <li>Os dados brutos são de domínio público, provenientes de portais governamentais.</li>
                     <li>A metodologia de coleta, agregação, enriquecimento e apresentação dos dados é propriedade
                         intelectual do Pulsedge.</li>
                     <li>É proibido revender, redistribuir, sublicenciar ou compartilhar o acesso ao serviço ou
                         às planilhas com terceiros não autorizados.</li>
+                    <li><strong>Modelo de acesso:</strong> a Pulsedge pode, a seu exclusivo critério,
+                        disponibilizar o acesso ao serviço por convite, lista de espera, cadastro aberto ao
+                        público em geral, ou qualquer combinação dessas formas, podendo alterar o modelo de
+                        acesso adotado a qualquer momento, sem necessidade de aviso prévio.</li>
+                    <li><strong>Ausência de exclusividade:</strong> salvo quando expressamente previsto em
+                        contrato específico, a assinatura não concede exclusividade territorial, setorial ou de
+                        mercado. A Pulsedge reserva-se o direito de, a qualquer momento e sem necessidade de aviso
+                        prévio, disponibilizar o serviço a outros assinantes, inclusive concorrentes diretos do
+                        assinante.</li>
                 </ul>
 
-                <h2>9. Da Privacidade e Proteção de Dados (LGPD)</h2>
+                <h2 class="notion-heading">9. Da Privacidade e Proteção de Dados (LGPD)</h2>
                 <p>O tratamento de dados pessoais dos assinantes é realizado conforme a
                     <a href="/privacidade">Política de Privacidade</a> da Pulsedge, em conformidade com a
                     LGPD (Lei 13.709/2018). Resumidamente:
@@ -613,12 +655,12 @@
                         encerramento, para cumprimento de obrigações fiscais e legais.</li>
                 </ul>
 
-                <h2>10. Das Modificações</h2>
+                <h2 class="notion-heading">10. Das Modificações</h2>
                 <p>A Pulsedge pode atualizar estes Termos de Serviço a qualquer momento. Alterações significativas
                     serão comunicadas por e-mail com antecedência mínima de 15 (quinze) dias. O uso continuado
                     do serviço após a comunicação implica aceitação dos novos termos.</p>
 
-                <h2>11. Da Lei Aplicável e Foro</h2>
+                <h2 class="notion-heading">11. Da Lei Aplicável e Foro</h2>
                 <ul>
                     <li>Estes Termos são regidos pelas leis da República Federativa do Brasil.</li>
                     <li>Fica eleito o Foro da Comarca de Piracicaba, Estado de São Paulo, para dirimir quaisquer
@@ -688,6 +730,44 @@
         });
 
     </script>
+    <script src="https://cdn.jsdelivr.net/gh/super-so/super-so.github.io@master/Floating-TOC/floating-v2.js"></script>
+    <style>
+        .super-floating-toc {
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+        }
+
+        @media (min-width: 769px) {
+            .super-floating-toc {
+                --floating-toc-panel-width: clamp(190px, 16vw, 240px);
+                --floating-toc-panel-max-height: min(48vh, 360px);
+                --floating-toc-panel-padding: 13px 15px;
+                --floating-toc-font-size: 13px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .super-floating-toc {
+                bottom: auto !important;
+            }
+
+            .super-floating-toc__button {
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            .super-floating-toc__panel {
+                top: 50% !important;
+                bottom: auto !important;
+                transform: translateY(-50%) scale(0.98) !important;
+            }
+
+            .super-floating-toc.is-open:not(.is-mobile-force-closed) .super-floating-toc__panel {
+                transform: translateY(-50%) scale(1) !important;
+            }
+        }
+    </style>
 </body>
 
 </html>

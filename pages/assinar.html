@@ -124,6 +124,11 @@
             line-height: 1.65;
         }
 
+        /* Reserves room at the end of the page so the fixed sticky CTA never covers real footer content. */
+        main:has(#state-checkout.active) ~ footer {
+            padding-bottom: calc(28px + 85px);
+        }
+
         footer p {
             font-size: 12px;
             line-height: 1.6;
@@ -528,7 +533,11 @@
             font-size: 11px;
             color: var(--muted);
             text-align: center;
-            padding: 10px 16px 14px;
+            padding: 10px 16px 10px;
+        }
+
+        .sheet-hint.sheet-disclaimer {
+            font-size: 10px;
         }
 
         .plans {
@@ -1542,6 +1551,38 @@
             color: var(--accent);
         }
 
+        /* ── CNPJ CALLOUT ── */
+        .cnpj-callout {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: rgba(20, 98, 245, 0.06);
+            border: 1px solid rgba(20, 98, 245, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            margin-bottom: 20px;
+        }
+
+        .cnpj-callout svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--accent);
+        }
+
+        .cnpj-callout strong {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+
+        .cnpj-callout span {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
         /* ── SCHEDULE TIMELINE + COMPARE ── */
         .schedule-timeline {
             position: relative;
@@ -1663,6 +1704,11 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.45);
+            line-height: 1.4;
+        }
+
+        .plan-name-break {
+            display: none;
         }
 
         .sticky-cta-price {
@@ -1706,7 +1752,16 @@
             }
 
             .sticky-cta-price {
-                font-size: 16px;
+                font-size: 15px;
+            }
+
+            .plan-name-break {
+                display: block;
+            }
+
+            /* Reserves room at the end of the page so the fixed sticky CTA never covers real footer content. */
+            main:has(#state-checkout.active) ~ footer {
+                padding-bottom: calc(28px + 76px);
             }
         }
     </style>
@@ -1852,7 +1907,7 @@
                             portal público diariamente &mdash; ou descobrir a movimentação semanas depois, por acaso.
                         </p>
                         <p class="lead-text">A Pulsedge faz essa varredura por você: cada linha da planilha já traz o
-                            processo, o status e os dados completos da empresa e do empreendimento, para que o
+                            processo, o status e as principais informações da empresa e do empreendimento, para que o
                             contato comece no mesmo dia &mdash; não semanas depois.</p>
                         <p class="lead-text">E cada linha já chega com:</p>
 
@@ -2155,6 +2210,9 @@
                                 <span><span class="dot group-c"></span>Dados do empreendimento</span>
                             </div>
                             <p class="sheet-hint">&larr; deslize para o lado para ver todas as colunas &rarr;</p>
+                            <p class="sheet-hint sheet-disclaimer">As informações são enriquecidas automaticamente a
+                                partir de diferentes fontes públicas, utilizando sempre os dados oficiais disponíveis
+                                para cada oportunidade.</p>
                         </div>
                     </div>
                 </section>
@@ -2242,6 +2300,19 @@
                                     da Pulsedge.
                                 </span>
                             </label>
+                        </div>
+
+                        <div class="cnpj-callout">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="4" y="2" width="16" height="20" rx="1" />
+                                <path d="M9 22v-4h6v4M9 6h.01M9 10h.01M9 14h.01M15 6h.01M15 10h.01M15 14h.01" />
+                            </svg>
+                            <div>
+                                <strong>Assinatura empresarial</strong>
+                                <span>A assinatura deve ser feita com o CNPJ da empresa que vai utilizar o serviço
+                                    &mdash; a Pulsedge é destinada exclusivamente a pessoas jurídicas.</span>
+                            </div>
                         </div>
 
                         <div class="cta-click-zone" id="cta-click-zone">
@@ -2357,6 +2428,18 @@
                                         todos os dias e mandamos o resultado pronto no seu e-mail.</p>
                                 </div>
                             </div>
+                            <div class="faq-item">
+                                <button type="button" class="faq-item-summary">Todas as oportunidades possuem
+                                    telefone, e-mail e CNPJ?</button>
+                                <div class="faq-item-body">
+                                    <p>A Pulsedge trata automaticamente inconsistências comuns das publicações
+                                        oficiais e cruza diferentes bases públicas para identificar CNPJ, contatos e
+                                        demais informações relevantes. A disponibilidade desses dados depende do que
+                                        os órgãos oficiais publicam e da possibilidade de associação automática entre
+                                        os registros. A Pulsedge prioriza qualidade em vez de volume: registros sem
+                                        informações mínimas para prospecção não são enviados ao cliente.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -2443,8 +2526,8 @@
                 </nav>
             </div>
             <div class="footer-divider"></div>
-            <p>As informações são coletadas de fontes públicas &mdash; CETESB, e-Ambiente, Receita Federal
-                &mdash; e não constituem garantia de resultado comercial.</p>
+            <p>As informações são coletadas de fontes públicas oficiais (CETESB, e-Ambiente e Receita Federal) e não
+                representam garantia de vendas, clientes ou resultados comerciais.</p>
             <p>&copy; <span id="footer-year"></span> Pulsedge. Todos os direitos reservados.</p>
             <p>Operado por Vinícius Pereira Barbosa &bull; CNPJ 65.606.332/0001-60 &bull; Piracicaba, SP,
                 Brasil</p>
@@ -2505,7 +2588,7 @@
             daily: {
                 id: 'daily',
                 name: 'Pulse Diário',
-                badge: 'Mais completo',
+                badge: 'Antecedência máxima',
                 badgeHighlight: true,
                 period: '/ mês',
                 features: [
@@ -2675,7 +2758,7 @@
             document.getElementById('btn-subscribe-sticky').classList.toggle('is-disabled', !enabled);
 
             if (selectedPlan) {
-                document.getElementById('sticky-plan-name').textContent = selectedPlan.name;
+                document.getElementById('sticky-plan-name').innerHTML = selectedPlan.name.replace(' ', ' <br class="plan-name-break">');
                 document.getElementById('sticky-plan-price').innerHTML = selectedPlan.price + ' <span>/ mês</span>';
             }
         }
